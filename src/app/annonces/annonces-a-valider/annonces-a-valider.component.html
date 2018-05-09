@@ -1,0 +1,26 @@
+<!-- <p><h5>Les annonces à Valider</h5></p> -->
+<p style="text-align: center">Les annonces à Valider</p><br>
+<div class="col-md-5">
+  <div *ngFor="let annonce of annonces; let i = index" >
+    <a
+      style="cursor: pointer;"
+      [routerLink]="annonce.id"
+      routerLinkActive="active"
+      class="list-group-item clearfix">
+      <div class="pull-right">
+        <h4 class="list-group-item-heading">{{ annonce.titre }}</h4>
+        <p class="list-group-item-text">{{ annonce.dateDepot }}</p>
+      </div>
+      <span class="pull-left">
+        <img
+          src="http://localhost:8080/images/{{annonce.cheminImage}}"
+          alt="{{ annonce.nom }}"
+          class="img-responsive" 
+          style="max-height: 85px;">
+      </span>
+    </a>
+  </div>
+</div>
+<div class="col-md-7">
+  <router-outlet></router-outlet>
+</div>

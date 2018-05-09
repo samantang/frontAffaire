@@ -1,0 +1,17 @@
+<div *ngIf="!usernameLogged" >
+        <p>
+          <button class="btn btn-info" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
+        </p>
+</div>
+<div *ngIf="usernameLogged" class="row">
+    <div class="col-md-4">
+        <app-mes-annonces-items
+          *ngFor="let annonceEl of annonces; let i = index"
+          [annonce]="annonceEl"
+          [index]="annonceEl.id"></app-mes-annonces-items> 
+      </div> 
+      <div class="col-md-8">
+          <router-outlet></router-outlet>
+        </div> 
+</div>
+

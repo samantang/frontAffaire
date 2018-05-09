@@ -1,0 +1,99 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">Gerer</h2>
+    </div>
+    <div class="panel panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <button class="btn btn-primary"><span class="glyphicon glyphicon-sort"></span><br>Remonter en haut</button>
+          </div>
+          <div class="col-md-4">
+              <button class="btn btn-primary"><span class="glyphicon glyphicon-adjust"></span><br>Mettre en avant</button>   
+          </div>
+          <div class="col-md-4">
+              <button class="btn btn-info"><span class="glyphicon glyphicon-share"></span><br>Partager Annonce</button>   
+          </div>
+        </div>
+      </div><br>
+      <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-4">
+              <button class="btn btn-info" (click)="onModifierAnnonce()"><span class="glyphicon glyphicon-edit"></span><br>Modifier Annonce</button>
+            </div>
+            <div class="col-md-4">
+                <div *ngIf="annonce.etatPublication === 'publie' " > 
+                    <button class="btn btn-warning" (click)="onDepublierAnnonce()"><span class="glyphicon glyphicon-remove-sign"></span><br>Dépublier Annonce</button>   
+                </div>
+                <div *ngIf="annonce.etatPublication === 'nonPublie' " > 
+                    <button class="btn btn-info"><span class="glyphicon glyphicon-ok-sign"></span><br>En attente de publication</button>   
+                </div>
+                <div *ngIf="annonce.etatPublication === 'depublie' " > 
+                    <button class="btn btn-success" (click)="onRePublierAnnonce()"><span class="glyphicon glyphicon-ok-sign"></span><br>Publier à nouveau</button>   
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-danger" (click)="onSupprimerAnnonce()"><span class="glyphicon glyphicon-remove-sign"></span><br>Supprimer Annonce</button>   
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4"><span style="font-weight: bold">Prix:</span> {{annonce.prix}}</div>
+      <div class="col-md-4"><span style="font-weight: bold">Ville:</span> {{annonce.ville}}</div>
+      <div class="col-md-4"><span style="font-weight: bold">Phone:</span> {{annonce.telephone}}</div>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-xs-12">
+      <img
+        src="http://localhost:8080/images/{{annonce.cheminImage}}"
+        alt="{{ annonce.nom }}"
+        class="img-responsive"
+        style="max-height: 300px;">
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        <img
+        [src]="annonce.cheminImage"
+        alt="{{ annonce.nom }}"
+        class="img-responsive"
+        style="max-height: 70px;">
+      </div>
+      <div class="col-md-3">
+        <img
+        [src]="annonce.cheminImage"
+        alt="{{ annonce.nom }}"
+        class="img-responsive"
+        style="max-height: 70px;">
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-xs-12">
+      <div>
+        <ul class="list-group">
+          <a  class="list-group-item ">
+            <h4 class="list-group-item-heading">DESCRIPTION</h4>
+            <p  class="list-group-item-text"><i><b> 
+              {{annonce.description}}</b></i></p>
+          </a>
+         </ul> 
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-3"><button class="btn btn-primary" (click)="onAnnonceDetails()">Plus de details <br> sur l'annonce</button></div>
+      <div class="col-md-3"><button class="btn btn-success"><span class="glyphicon glyphicon-heart" (click)="onSauvegarderAnnonce()"></span><br>Suvegarder</button></div>
+      <div class="col-md-3"><button class="btn btn-warning" (click)="onSignalerAnnonce()"><span class="glyphicon glyphicon-thumbs-down"></span><br>Signaler</button></div>
+      <div class="col-md-3"><button class="btn btn-info"><span class="glyphicon glyphicon-share"></span><br>Partager</button></div>
+    </div>
+  </div><br> -->
+  

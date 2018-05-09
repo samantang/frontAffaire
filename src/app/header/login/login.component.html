@@ -1,0 +1,102 @@
+<div class="row" >
+  <div class="col-md-5" style="background-color: rgb(67, 165, 29)">
+          <form class="form-signin" (ngSubmit)="onSubmit()" [hidden]="loggedIn">       
+            <h3 class="clean-font"> connectez vous</h3><br><br>
+
+            <!-- affichage de l'erreur en cas de non connexion -->
+            <div *ngIf="erreurLogin !== '' " >
+              <p style="color: crimson">{{erreurLogin}}</p>
+            </div>
+            
+            <label for="username">Nom d'utilisateur *</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="username" placeholder="Username" name="username" required autofocus="" />
+            <br />
+            
+            <label for="password">Mot de passe *</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" required /> 
+            <div class="form-group">     
+            <br/>
+            <label >
+               <input type="checkbox" name="remember-me" id="remember-me" />&nbsp;<span class="clean-font">Se souvenir de moi</span>
+            </label>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Login</button> <br>  
+          </form>
+         <div [hidden]="!loggedIn">
+           <button class="btn btn-info" (click) = "logout()">Déconnexion</button>
+         </div> 
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-5" style="background-color: aqua">
+          <form  (ngSubmit)="onSignup()" #f="ngForm" >       
+            <h3 class="clean-font">Pas encore de compte? <span style="color: blue">Inscrivez vous</span></h3> <br><br>
+
+            <!-- affichage de l'erreur en cas de non inscription -->
+            <div *ngIf="erreurSignUp !== '' " >
+                <p style="color: crimson">{{erreurSignUp}}</p>
+              </div>
+
+            <div class="form-group">
+                <label for="tel">Téléphone *</label><br>
+                  <input type="number" id="tel"  class="form-control" placeholder="Telephone"  required pattern="^[1-9]+[0-9]*$" ngModel name="tel" #tel="ngModel">
+                <span class="help-block" *ngIf="!tel.valid && tel.touched" style="color: red">Le téléphone est nécessaire</span>
+            </div>
+           
+             <div class="form-group">
+                <label for="email">Email *</label><br>
+                  <input type="email" id="email"  class="form-control" placeholder="email"  required  ngModel name="email" #email="ngModel">
+                <span class="help-block" *ngIf="!email.valid && email.touched" style="color: red">l'email est nécessaire</span>
+            </div>
+             
+            <label for="usernameInscription">Nom d'utilisateur *</label><br>
+            <input type="text" class="form-control" name="usernameInscription" ngModel placeholder="Username"  required autofocus="" #usernameInscription="ngModel"/>
+            <span class="help-block" *ngIf="!usernameInscription.valid && usernameInscription.touched" style="color: red">Un nom d'utlisateur est nécessaire</span>
+            <br/>
+            
+            <label for="passwordInscription"> Mot de Passe *</label>
+            <input type="password" class="form-control" name="passwordInscription" ngModel placeholder="Password" #passwordInscription="ngModel" required /> <br>
+            <span class="help-block" *ngIf="!passwordInscription.valid && passwordInscription.touched" style="color: red">Mot de passe nécessaire</span>
+            
+            <!-- <label for="passwordEncore">Mot de passe encore</label>
+            <input type="password" class="form-control" name="passwordEncore" ngModel placeholder="passwordEncore" required  passwordEncore="ngModel"/> <br>
+            <span class="help-block" *ngIf="!passwordEncore.valid && passwordEncore.touched" style="color: red">Confirmation Mot de passe</span> -->
+            
+            <label for="type">Vous êtes</label>
+            <select (change)="onSelectType($event.target.value)" name="type" id="type" class="form-control custom-select" ngModel required #region="ngModel" >
+                <option value="particulier">Partuculier</option>
+                <option value="professionnel">Professionnel</option>
+            </select><br>
+
+            <div *ngIf="typeUser === 'professionnel'" class="well" >
+                <div class="form-group">
+                   <label for="nomSociete">Nom de l'entreprise</label>
+                   <input type="text" name="nomSociete" id="nomSociete" class="form-control" ngModel required #nomSociete="ngModel"><br>
+                   <span class="help-block" *ngIf="!nomSociete.valid && nomSociete.touched" style="color: red">Le téléphone est nécessaire</span>
+                </div>
+              
+              <div class="form-group">
+                  <label for="numeroSiretSocite">Numéro Siret de l'entreprise</label><br>
+                    <input type="number" id="numeroSiretSocite"  class="form-control" placeholder="numéro siret"  required pattern="^[1-9]+[0-9]*$" ngModel name="numeroSiretSocite" #numeroSiretSocite="ngModel">
+                  <span class="help-block" *ngIf="!numeroSiretSocite.valid && numeroSiretSocite.touched" style="color: red">merci de mentionner un numéro positif</span>
+              </div>
+
+              <div class="form-group">
+                  <label for="adresseSocite">Adresse de l'entreprise</label><br>
+                    <input type="text" id="adresseSocite"  class="form-control" placeholder="adresse"  required  ngModel name="adresseSocite" #adresseSocite="ngModel">
+                  <span class="help-block" *ngIf="!adresseSocite.valid && adresseSocite.touched" style="color: red">l'adresse est nécessaire</span>
+              </div>
+
+            </div> 
+            <!-- affichage de l'erreur en cas de non inscription -->
+            <div *ngIf="erreurSignUp !== '' " >
+              <p style="color: crimson">{{erreurSignUp}}</p>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="!f.valid">Valider</button>
+              <button type="button" class="btn btn-primary" (click)="onClear()">Effacer</button>
+          </form>
+    </div>
+</div>
+

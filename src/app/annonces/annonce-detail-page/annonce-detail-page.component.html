@@ -1,0 +1,105 @@
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">{{annonce.titre}}</h2>
+      </div>
+      <div class="panel-body">
+              <carousel>
+                  <slide *ngIf="annonce.cheminImage" >
+                    <img class="img-main-carousel" src="http://localhost:8080/images/{{annonce.cheminImage}}" alt="First slide" style="display: block; width: 100%; max-height: 350px;" class="img-responsive">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h3> 1/{{annonce.nbImages}}</h3>
+                    </div>
+                  </slide>
+                  <slide *ngIf="annonce.cheminImage1" >
+                    <img class="img-main-carousel" src="http://localhost:8080/images/{{annonce.cheminImage1}}" alt="Second slide" style="display: block; width: 100%; max-height: 350px;" class="img-responsive">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h3> 2/{{annonce.nbImages}}</h3>
+                    </div>
+                  </slide>
+                  <slide *ngIf="annonce.cheminImage2" >
+                    <img class="img-main-carousel" src="http://localhost:8080/images/{{annonce.cheminImage2}}" alt="Third  slide" style="display: block; width: 100%; max-height: 350px;" class="img-responsive">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h3> 3/{{annonce.nbImages}}</h3>
+                    </div>
+                  </slide>
+                  <slide *ngIf="annonce.cheminImage3" >
+                    <img class="img-main-carousel" src="http://localhost:8080/images/{{annonce.cheminImage3}}" alt="Fourth  slide" style="display: block; width: 100%; max-height: 350px;" class="img-responsive">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h3> 4/{{annonce.nbImages}}</h3>
+                    </div>
+                  </slide>
+                </carousel>     
+      </div><hr>
+      <div class="panel-footer">
+        <h3 style=" font-weight: bold; font-size: x-large; float: left" class="panel-title">PRIX</h3>
+        <h3 style=" font-weight: bold; font-size: x-large; float: right; color: rgb(247, 182, 30)" class="panel-title">{{annonce.prix}} &nbsp; GNF</h3>
+      </div><hr>
+      <div class="panel-footer">
+          <h3 style=" font-weight: bold; font-size: x-large; float: left" class="panel-title">REGION</h3>
+          <h3 style=" font-weight: bold; font-size: x-large; float: right; color: rgb(22, 133, 236)" class="panel-title">{{annonce.region}}</h3>
+        </div><hr>
+        <div class="panel-footer">
+          <h3 style=" font-weight: bold; font-size: x-large; float: left" class="panel-title">VILLE</h3>
+          <h3 style=" font-weight: bold; font-size: x-large; float: right; color: rgb(22, 133, 236)" class="panel-title">{{annonce.ville}}</h3>
+        </div><hr>
+      <div class="panel-footer">
+        <p style=" font-weight: bold; font-size: x-large">Description</p><br>
+        <p>{{annonce.description}}</p>
+      </div>
+      <div class="panel-footer">
+          <p style=" font-weight: bold; font-size: x-large">Action</p><br>
+          <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-4"><button class="btn btn-success"><span class="glyphicon glyphicon-heart" [routerLink]="['/annonce-details', 1]"></span><br>Suvegarder</button></div>
+                <div class="col-md-4"><button class="btn btn-warning" (click)="onSignalerAnnonce()"><span class="glyphicon glyphicon-thumbs-down"></span><br>Signaler</button></div>
+                <div class="col-md-4"><button class="btn btn-info"><span class="glyphicon glyphicon-share"></span><br>Partager</button></div>
+              </div>
+            </div><br>
+        </div>
+     </div>
+  </div>
+  <div class="col-md-4">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">{{annonce.titre}}</h2>
+          </div>
+          <div class="panel panel-body">
+            <p style="text-align: center; font-weight: bold; color: darkmagenta ">{{annonce.user_annoncesPostees.username}}</p>
+            <p style="text-align: center; font-weight: bold; color: darkmagenta ">{{annonce.user_annoncesPostees.phone}}</p>
+            <div style="text-align: center">
+              <button class="btn btn-info btn-lg">Envoyer Message</button> 
+            </div>
+          </div>
+      </div>
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">Gerer</h2>
+          </div>
+          <div class="panel panel-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <button class="btn btn-primary"><span class="glyphicon glyphicon-sort"></span><br>Remonter en haut</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary"><span class="glyphicon glyphicon-adjust"></span><br>Mettre en avant</button>   
+                </div>
+              </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    <button class="btn btn-info"><span class="glyphicon glyphicon-edit"></span><br>Modifier Annonce</button>
+                  </div>
+                  <div class="col-md-6">
+                      <button class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"></span><br>Supprimer annonce</button>   
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>

@@ -1,0 +1,95 @@
+<div class="well">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4"><span style="font-weight: bold">Prix:</span> {{annonce.prix}} &nbsp; GNF</div>
+      <div class="col-md-4"><span style="font-weight: bold">Date:</span> {{annonce.dateStringDepot}}</div>
+      <div class="col-md-4"><span style="font-weight: bold">Annonceur:</span> {{annonce.user_annoncesPostees.username}}</div>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-3"><span style="font-weight: bold">Ville:</span> {{annonce.ville}}</div>
+      <div class="col-md-3"><span style="font-weight: bold">Region:</span> {{annonce.region}}</div>
+      <div class="col-md-3">
+        <div *ngIf="annonce.telephoneVisible; else noPhone"  class="col-md-4"><span style="font-weight: bold">Phone:</span> {{annonce.user_annoncesPostees.phone}}</div>
+        <ng-template #noPhone>
+          <!-- <div  class="col-md-4"><span style="font-weight: bold">Email:</span> {{annonce.user_annoncesPostees.email}}</div> -->
+          <div class="col-md-4"> <button class="btn btn-danger" ><span style="font-weight: bold">phone</span>&nbsp;<span class="glyphicon glyphicon-ban-circle"></span></button></div>
+        </ng-template>
+      </div>
+      <div class="col-md-2"> <button class="btn btn-warning" (click)="onEcrireMessage()"><span class="glyphicon glyphicon-envelope"></span></button></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    
+    <carousel>
+      <slide *ngIf="annonce.cheminImage" >
+        <img class="img-main-carousel" src="http://localhost:8080/images/{{annonce.cheminImage}}" alt="First slide" style="display: block; width: 100%; max-height: 350px;" class="img-responsive">
+        <div class="carousel-caption d-none d-md-block">
+          <h3> 1/{{annonce.nbImages}}</h3>
+        </div>
+      </slide>
+      <slide *ngIf="annonce.cheminImage1" >
+        <img class="img-main-carousel" src="http://localhost:8080/images/{{annonce.cheminImage1}}" alt="Second slide" style="display: block; width: 100%; max-height: 350px;" class="img-responsive">
+        <div class="carousel-caption d-none d-md-block">
+          <h3> 2/{{annonce.nbImages}}</h3>
+        </div>
+      </slide>
+      <slide *ngIf="annonce.cheminImage2" >
+        <img class="img-main-carousel" src="http://localhost:8080/images/{{annonce.cheminImage2}}" alt="Third  slide" style="display: block; width: 100%; max-height: 350px;" class="img-responsive">
+        <div class="carousel-caption d-none d-md-block">
+          <h3> 3/{{annonce.nbImages}}</h3>
+        </div>
+      </slide>
+      <slide *ngIf="annonce.cheminImage3" >
+        <img class="img-main-carousel" src="http://localhost:8080/images/{{annonce.cheminImage3}}" alt="Fourth  slide" style="display: block; width: 100%; max-height: 350px;" class="img-responsive">
+        <div class="carousel-caption d-none d-md-block">
+          <h3> 4/{{annonce.nbImages}}</h3>
+        </div>
+      </slide>
+    </carousel>
+  </div>
+</div><br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+      <img
+      [src]="annonce.cheminImage"
+      alt="{{ annonce.nom }}"
+      class="img-responsive"
+      style="max-height: 70px;">
+    </div>
+    <div class="col-md-3">
+      <img
+      [src]="annonce.cheminImage"
+      alt="{{ annonce.nom }}"
+      class="img-responsive"
+      style="max-height: 70px;">
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div><br>
+<div class="row">
+  <div class="col-xs-12">
+    <div>
+      <ul class="list-group">
+        <a  class="list-group-item ">
+          <h4 class="list-group-item-heading">DESCRIPTION</h4>
+          <p  class="list-group-item-text"><i><b> 
+            {{annonce.description}}</b></i></p>
+        </a>
+       </ul> 
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-3"><button class="btn btn-primary" (click)="onAnnonceDetails()">Plus de details <br> sur l'annonce</button></div>
+    <div class="col-md-3"><button class="btn btn-success" (click)="onSauvegarderAnnonce()"><span class="glyphicon glyphicon-heart" ></span><br>Suvegarder</button></div>
+    <div class="col-md-3"><button class="btn btn-warning" (click)="onSignalerAnnonce()"><span class="glyphicon glyphicon-thumbs-down"></span><br>Signaler</button></div>
+    <div class="col-md-3"><button class="btn btn-info"><span class="glyphicon glyphicon-share"></span><br>Partager</button></div>
+  </div>
+</div><br>

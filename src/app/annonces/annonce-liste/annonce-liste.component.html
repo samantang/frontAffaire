@@ -1,0 +1,48 @@
+<div *ngIf="lesAnnoncesRecherche; else pasDeRecherche" >
+  <div class="col-xs-12">
+      <app-annonce-item
+        *ngFor="let annonceEl of lesAnnoncesRecherche | triAnnonce: tri ; let i = index"
+        [annonce]="annonceEl"
+        [index]="annonceEl.id"></app-annonce-item>  
+    </div>
+</div>
+
+
+<!-- <ng-template #pasDeRecherche>
+  <p>Alors pas de recherche</p>
+</ng-template> -->
+  <div class="row">
+    <div *ngIf="typeChoisiPaticulier" > 
+      <div class="col-xs-12">
+        <app-annonce-item
+          *ngFor="let annonceEl of annonces | choixTypePipe: 'Particulier' | triAnnonce: tri ; let i = index"
+          [annonce]="annonceEl"
+          [index]="annonceEl.id"></app-annonce-item> 
+      </div> 
+    </div>
+    <div *ngIf="typeChoisiProfessionnel" >
+        <div class="col-xs-12">
+          <app-annonce-item
+            *ngFor="let annonceEl of annonces | choixTypePipe: 'Professionnel' | triAnnonce: tri  ; let i = index"
+            [annonce]="annonceEl"
+            [index]="annonceEl.id"></app-annonce-item> 
+        </div> 
+      </div>
+      <div *ngIf="typeChoisiTous" > 
+          <div class="col-xs-12">
+            <app-annonce-item
+              *ngFor="let annonceEl of annonces | triAnnonce: tri ; let i = index"
+              [annonce]="annonceEl"
+              [index]="annonceEl.id"></app-annonce-item>  
+          </div> 
+        </div> 
+  </div>
+
+  <div class="row"> 
+    <div class="col-xs-12 col-12">
+      <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm" (pageChanged)="pageChanged($event)"
+                  [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event"></pagination>
+    </div>
+  </div>
+  
+  <pre class="card card-block card-header">Page: {{bigCurrentPage}} / {{numPages}}</pre>

@@ -1,0 +1,58 @@
+<p>
+  mes-infos works!
+</p>
+<p>Pseudo: {{userLogged.username}}</p>
+<p>Prénom: {{userLogged.lastName}}</p>
+<p>Nom: {{userLogged.firstName}}</p>
+<p>Email: {{userLogged.email}}</p>
+
+<p>Vous avez oublié ou voulez changer votre mot de passe ?</p>
+<div class="col-md-5" style="background-color: rgb(67, 165, 29)">
+  <form class="form-signin" (ngSubmit)="onSubmit()">       
+    <h3 class="clean-font"> Changer de Mot de passe</h3><br><br>
+
+    <!-- affichage de l'erreur en cas de non connexion -->
+    <div *ngIf="erreurLogin !== '' " >
+      <p style="color: crimson">{{erreurLogin}}</p>
+    </div>
+    
+    <label for="password">Ancien Mot de passe *</label>
+    <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="ancien mot de passe" required autofocus="" />
+    <br />
+    
+    <label for="newpassword"> Nouveau Mot de passe *</label>
+    <input type="password" class="form-control" name="newpassword" [(ngModel)]="newpassword" placeholder="nouveau mot de passe" required /> 
+    <div class="form-group">     
+    <br/>
+
+    </div>
+    <button class="btn btn-primary btn-block" type="submit">Valider</button> <br>  
+  </form>
+</div>
+<div class="col-md-2"></div>
+<div class="col-md-5" style="background-color: rgb(67, 165, 29)">
+  <form class="form-signin" (ngSubmit)="onSubmit()">       
+    <h3 class="clean-font"> Mot de passe oublié?</h3><br><br>
+
+    <!-- affichage de l'erreur en cas de non connexion -->
+    <div *ngIf="erreurLogin !== '' " >
+      <p style="color: crimson">{{erreurLogin}}</p>
+    </div>
+    
+    <label for="username">Nom d'utilisateur *</label>
+    <input type="text" class="form-control" name="username" [(ngModel)]="username" placeholder="Username" name="username" required autofocus="" />
+    <br />
+    
+    <!-- <label for="password"> Nouveau Mot de passe *</label>
+    <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" required /> 
+    <div class="form-group">     
+    <br/>
+    <label >
+       <input type="checkbox" name="remember-me" id="remember-me" />&nbsp;<span class="clean-font">Se souvenir de moi</span>
+    </label>
+    </div> -->
+    <button class="btn btn-primary btn-block" type="submit">Login</button> <br>  
+  </form>
+</div>
+
+

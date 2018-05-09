@@ -1,0 +1,91 @@
+<p><strong>Service client</strong></p><hr>
+<div>
+  <p>Nous contacter</p>
+  <p>Nous vous proposons de sélectionner le motif de votre demande dans le menu ci-dessous. Vous y trouverez un texte d'information qui répond aux cas fréquents rencontrés par nos utilisateurs et clients.<br><br>
+      
+      Notre page d'aide en ligne est également disponible. Vous y retrouverez de nombreuses informations sur l'utilisation du site. Si vous souhaitez obtenir plus de réponse à votre question, vous pouvez détailler votre demande via le formulaire de contact, nous y apporterons une réponse sous 24 heures.
+       Toutefois, si elle nécessite une expertise plus approfondie, ce délai peut être étendu à 6 jours ouvrés.<br><br>
+      
+      Attention : notre service client est fermé les jours fériés.</p>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">Signaler l'annonce</h2>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <section class="col-sm-12">
+          <form class="well" (ngSubmit)="onSubmit()" #f="ngForm">
+            <h4>Motif de votre signalement</h4>
+            <fieldset>
+              <div *ngFor="let motifsignalement of motifsSignalement" >
+                  <label>
+                      <input type="radio" name="motifsignalement" id="motifsignalement" [value]="motifsignalement" ngModel required> &nbsp; {{motifsignalement}}
+                    </label>
+              </div><br><br>
+              <!-- <div class="radio">
+                <label for="ami" class="radio">
+                  <input type="radio" name="origine" value="fraude" id="fraude">
+                  Fraude
+                </label>
+              </div>
+              <div class="radio">
+                <label for="web" class="radio">
+                  <input type="radio" name="origine" value="doublon" id="doublon">
+                  Doublon 
+                </label>
+              </div>
+              <div class="radio">
+                <label for="web" class="radio">
+                  <input type="radio" name="origine" value="discrimination" id="discrimination">
+                  Discrimination 
+                </label>
+              </div>
+              <div class="radio">
+                <label for="web" class="radio">
+                  <input type="radio" name="origine" value="animaux" id="animaux">
+                  Animaux 
+                </label>
+              </div>
+              <div class="radio">
+                <label for="hasard" class="radio">
+                  <input type="radio" name="origine" value="mauvaisecategorie" id="mauvaisecategorie">
+                  Mauvaise Categorie 
+                </label>
+              </div>
+              <div class="radio">
+                <label for="autre" class="radio">
+                  <input type="radio" name="origine" value="autre" id="autre">
+                  Autre... 
+                </label>
+              </div> -->
+              <!-- <div class="form-group">
+                <label class="sr-only" for="text">Saisie</label>
+                <input id="email" type="email" class="form-control" placeholder="Votre Email">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="text">Saisie</label>
+                <input id="nom" type="text" class="form-control" placeholder="Votre Nom">
+              </div> -->
+              <label for="textarea">Votre message :</label>
+                <textarea id="textarea" class="form-control" rows="4" name="messagesignalement" required ngModel #messagesignalement="ngModel"></textarea><br>
+                <span class="help-block" *ngIf="!messagesignalement.valid && messagesignalement.touched" style="color: red">le message du signalement est nécessaire</span>
+                
+                <div class="row" *ngIf="!usernameLogged">
+                    <p>
+                      <button class="btn btn-danger" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
+                    </p>
+                </div>
+                <div>
+                    <button class="btn btn-success" [disabled]="!f.valid" type="submit">Envoyer</button>
+                    <button class="btn btn-danger" (click)="onAnnuler()">Annuler</button><br>
+                    
+                </div>
+            </fieldset>
+          </form>
+        </section>
+      </div>
+    </div>
+</div>
+
+

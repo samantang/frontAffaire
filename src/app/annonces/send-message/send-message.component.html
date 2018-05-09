@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3>Envoyer un message </h3> <hr>
+    <div>
+      <p>Pensez à indiquer vos coordonnées téléphoniques pour que l'annonceur puisse vous contacter facilement. Tout démarchage publicitaire ou spamming sera éliminé.</p>
+
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+          <label for="textarea">Votre message :</label>
+          <textarea id="textarea" class="form-control" rows="15" style="resize: none" name="message" ngModel required ></textarea><br><br>
+          
+          <div class="row" *ngIf="!usernameLogged">
+              <p>
+                <button class="btn btn-danger" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
+              </p>
+
+      </div>
+          <div >
+              <button
+                type="submit"
+                class="btn btn-success"
+                [disabled]="!f.valid">Valider</button>
+              <button type="button" class="btn btn-danger" (click)="onCancel()">Annuler</button>
+            </div>
+      </form>
+      
+    </div>
+
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">Informations sur l'annonce</h2>
+      </div>
+      <div class="panel-body">
+          <!-- <div *ngIf="annonce.telephone !== ''" >
+           Phone:  {{annonce.telephone}}
+          </div> -->
+          <h4 style="text-align: left; font-weight: bold; font-size: x-large"> <span style="color: rgb(25, 72, 199)">{{annonce.titre}}</span></h4>
+          <p>Date de mise en service: &nbsp;<span style="color: mediumspringgreen">{{annonce.dateDepot}}</span> </p><hr>
+          <h5 style="text-align: left; font-weight: bold; font-size: x-large"> Region: <span style="color: mediumspringgreen">{{annonce.region}}</span></h5><hr>
+          <h5 style="text-align: left; font-weight: bold; font-size: x-large">Ville: <span style="color: mediumspringgreen">{{annonce.ville}}</span></h5><hr>
+          <h5 style="text-align: left; font-weight: bold; font-size: x-large">Prix: <span style="color: mediumspringgreen">{{annonce.prix}} &nbsp; GNF </span></h5><hr><br>
+          
+          <h5 style="text-align: left; font-weight: bold; font-size: x-large">Ville: <span style="color: rgb(33, 84, 180)">Description:</span></h5>
+          {{annonce.description}}
+      </div>
+    </div>
+  </div>
+</div>
+  

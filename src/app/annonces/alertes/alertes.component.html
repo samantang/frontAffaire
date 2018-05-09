@@ -1,0 +1,20 @@
+ <div *ngIf="alertes" >
+    <h3>Vos alertes actives</h3>
+    <div class="well" *ngFor="let alerte of alertes" >
+      <div class="row">
+        <div class="col-md-3">
+            {{alerte.titre}}
+        </div>
+        <div class="col-md-6">
+          <span style="font-weight: bold; font-style: italic">Description:</span>
+          {{alerte.region}}
+          {{alerte.ville}}
+          {{alerte.categorie}}
+        </div>
+        <div class="col-md-3">
+          <a href="">Modifier</a><br>
+          <a href="">supprimer</a>
+        </div>
+      </div>
+    </div>
+ </div>

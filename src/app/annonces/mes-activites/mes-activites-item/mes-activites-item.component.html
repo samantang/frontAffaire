@@ -1,0 +1,80 @@
+<a *ngIf="annonceValidee !== undefined" 
+  style="cursor: pointer;"
+  
+  class="list-group-item clearfix">
+  <div class="pull-right" style="text-align: right ">
+    <h4 class="list-group-item-heading">{{ annonceValidee.titre }}</h4>
+    <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonceValidee.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonceValidee.ville }}</span></p><br>
+    <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonceValidee.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+    <p class="list-group-item-text" style="color: darkblue;">{{ annonceValidee.dateStringDepot }}</p><br>
+    <button class="btn btn-success" (click)="onVoirDetailsAnnonce()">Voir Détails de l'annonce</button>
+  </div>
+  <span class="pull-left">
+    <img
+      src="http://localhost:8080/images/{{annonceValidee.cheminImage}}"
+      alt="{{ annonceValidee.nom }}"
+      class="img-responsive" 
+      style="max-height: 160px; max-width: 350px;">
+  </span>
+</a>
+
+<a *ngIf="annonceInvalidee !== undefined" 
+  style="cursor: pointer;"
+  
+  class="list-group-item clearfix">
+  <div class="pull-right" style="text-align: right ">
+    <h4 class="list-group-item-heading">{{ annonceInvalidee.titre }}</h4>
+    <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonceInvalidee.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonceInvalidee.ville }}</span></p><br>
+    <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonceInvalidee.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+    <p class="list-group-item-text" style="color: darkblue;">{{ annonceInvalidee.dateStringDepot }}</p><br>
+    <button class="btn btn-success" (click)="onVoirDetailsAnnonce()">Voir Détails de l'annonce</button>
+  </div>
+  <span class="pull-left">
+    <img
+      src="http://localhost:8080/images/{{annonceInvalidee.cheminImage}}"
+      alt="{{ annonceInvalidee.nom }}"
+      class="img-responsive" 
+      style="max-height: 160px; max-width: 350px;">
+  </span>
+</a>
+
+<a *ngIf="annonceSignalee !== undefined" 
+  style="cursor: pointer;"
+  
+  class="list-group-item clearfix">
+  <div class="pull-right" style="text-align: right ">
+    <h4 class="list-group-item-heading">{{ annonceSignalee.titre }}</h4>
+    <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonceSignalee.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonceSignalee.ville }}</span></p><br>
+    <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonceSignalee.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+    <p class="list-group-item-text" style="color: darkblue;">{{ annonceSignalee.dateStringDepot }}</p><br>
+    <button class="btn btn-success" (click)="onVoirDetailsAnnonce()">Voir Détails de l'annonce</button>
+  </div>
+  <span class="pull-left">
+    <img
+      src="http://localhost:8080/images/{{annonceSignalee.cheminImage}}"
+      alt="{{ annonceSignalee.nom }}"
+      class="img-responsive" 
+      style="max-height: 160px; max-width: 350px;">
+  </span>
+</a>
+
+
+<a *ngIf="annonceDepubliee !== undefined" 
+  style="cursor: pointer;"
+  
+  class="list-group-item clearfix">
+  <div class="pull-right" style="text-align: right ">
+    <h4 class="list-group-item-heading">{{ annonceDepubliee.titre }}</h4>
+    <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonceDepubliee.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonceDepubliee.ville }}</span></p><br>
+    <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonceDepubliee.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+    <p class="list-group-item-text" style="color: darkblue;">{{ annonceDepubliee.dateStringDepot }}</p><br>
+    <button class="btn btn-success" (click)="onVoirDetailsAnnonce()">Voir Détails de l'annonce</button>
+  </div>
+  <span class="pull-left">
+    <img
+      src="http://localhost:8080/images/{{annonceDepubliee.cheminImage}}"
+      alt="{{ annonceDepubliee.nom }}"
+      class="img-responsive" 
+      style="max-height: 160px; max-width: 350px;">
+  </span>
+</a>

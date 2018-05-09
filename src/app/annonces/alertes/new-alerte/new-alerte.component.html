@@ -1,0 +1,93 @@
+<div class="col-md-12">
+  <div *ngIf="!usernameLogged" >
+        <p>
+          <button class="btn btn-info" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
+        </p>
+  </div>
+  <div *ngIf="usernameLogged">
+      <h3>Creation d'une alerte</h3>
+      <p>Pour faciliter vos recherches, vous pouvez créer des alertes et recevoir toutes les nouvelles annonces correspondant à vos critères.
+          Les alertes sont disponibles sur les catégories sont les grandes catégories.
+      </p><br><br>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+         <div class="row">
+           <div class="col-md-4">
+              <label >Titre de l'alerte</label><br>
+            <div class="form-group">
+              <input type="text" name="titre" id="" class="form-control" placeholder="Titre de l'annonce" ngModel required>
+            </div>
+           </div>
+           <div class="col-md-4">
+             <div class="form-group">
+                <label >Nature de l'alerte</label><br>
+               <div class="checkbox">
+                 <label>
+                   <input type="checkbox" name="particuliers" id="" ngModel>Particuliers
+                 </label> &nbsp;
+                 <label>
+                    <input type="checkbox" name="professionnels" id="" ngModel>Professionels
+                  </label>
+               </div>
+               
+             </div>
+           </div>
+           <div class="col-md-4">
+              <div class="form-group form-inline">
+                  <label >Type de l'alerte</label><br>
+                  <div class="radio" *ngFor="let typealerte of typeAlerte" >
+                    <label>
+                      <input type="radio" name="typealerte" id="typealerte" [value]="typealerte" ngModel required>&nbsp;{{typealerte}}
+                    </label>&nbsp; &nbsp;
+                  </div>
+              </div>
+           </div>
+         </div> <hr>
+         <div class="row">
+            <div class="col-md-4">
+               <label >Categorie</label><br>
+             <div class="form-group">
+                <select name="categorie" id="categorie" class="form-control custom-select" ngModel required #categorie="ngModel">
+                    <option selected>Selectionnez</option>
+                    <optgroup label="Vehicule">
+                      <option value="vehicule">Vehicule</option>
+                    </optgroup>
+                    <optgroup label="Immobilier">
+                        <option value="immobilier">Immobilier</option>
+                    </optgroup>
+                    <optgroup label="Multimedia">
+                          <option value="multimedia">Multimédia</option>
+                     </optgroup>
+                    <optgroup label="Maison">
+                            <option value="maison">Maison</option>
+                    </optgroup>
+                    <optgroup label="Services">
+                              <option value="services">Services</option>
+                    </optgroup>
+                  </select>
+             </div>
+            </div>
+            <div class="col-md-4">
+                <label for="region">Region</label><br>
+                <select name="region" id="region" class="form-control custom-select" ngModel required #region="ngModel" >
+                          <option value="conakry">Conakry</option>
+                          <option value="kindia">Kindia</option>
+                          <option value="boke">Boké</option>
+                          <option value="mamou">Mamou</option>
+                          <option value="labe">Labé</option>
+                          <option value="faranah">Faranah</option>
+                          <option value="kankan">Kankan</option>
+                          <option value="nzerekore">N'zérékoré</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label name="">la Ville</label>
+              <input type="text" name="ville" id="" class="form-control" ngModel required #ville="ngModel" placeholder="Ville">
+            </div>
+          </div> 
+          <div>
+            <button type="submit" class="btn btn-success" [disabled]="!f.valid">Valider</button>&nbsp;
+            <button type="submit" class="btn btn-danger">Annuler</button>
+          </div>
+      </form>
+  </div>
+</div>

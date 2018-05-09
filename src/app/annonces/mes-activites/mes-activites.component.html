@@ -1,0 +1,42 @@
+
+<tabset type="pills">
+    <tab heading="Mes annonces Validées">
+      <div class="row"><br>
+        <app-mes-activites-item
+          *ngFor="let validee of mesAnnoncesValidees; let i = index"
+          [annonceValidee]="validee"
+          [indexValidee]="validee.id" >
+        </app-mes-activites-item>
+      </div>
+    </tab>
+
+    <tab heading="Mes annonces Invalidées">
+        <div class="row"><br>
+          <app-mes-activites-item
+            *ngFor="let invalidee of mesAnnoncesInvalidees; let i = index"
+            [annonceInvalidee]="invalidee"
+            [indexInvalidee]="invalidee.id" >
+          </app-mes-activites-item>
+        </div>
+    </tab>
+
+    <tab heading="Mes annonces Signalées">
+        <div class="row"><br>
+          <app-mes-activites-item
+            *ngFor="let signalee of mesAnnoncesSignalees; let i = index"
+            [annonceSignalee]="signalee"
+            [indexSignalee]="signalee.id" >
+          </app-mes-activites-item>
+        </div>
+    </tab>
+
+    <tab heading="Mes annonces Dépubliées">
+        <div class="row"><br>
+          <app-mes-activites-item
+            *ngFor="let depubliee of mesAnnoncesDepubliees; let i = index"
+            [annonceDepubliee]="depubliee"
+            [indexDepubliee]="depubliee.id" >
+          </app-mes-activites-item>
+        </div>
+    </tab>
+</tabset>

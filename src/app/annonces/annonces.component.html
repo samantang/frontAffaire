@@ -1,0 +1,511 @@
+  <div>
+    <p style="text-align: center; color: orangered">{{infoRecherche}}</p>
+  </div>
+  <div>
+    <form (ngSubmit)="onSubmit()" #f="ngForm" class="well">
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" name="recherche" id="" placeholder="Que cherchez-vous?" ngModel class="form-control">
+        </div>
+        <div class="col-md-4">
+            <select (change)="onSelectCategorie($event.target.value)" name="categorie" id="categorie" ngModel  class="form-control custom-select" >
+                <option selected value="">Categorie</option>
+                <optgroup label="Vehicule">
+                  <option value="voiture">Voiture</option>
+                  <option value="motos">Motos</option>
+                  <option value="poidslourd">Poids Lourd</option>
+                  <option value="velo">Velo</option>
+                </optgroup>
+                <optgroup label="Immobilier">
+                    <option value="venteImmobilier">Vente</option>
+                    <option value="locationImmobilier">Location</option>
+                </optgroup>
+                <optgroup label="Multimedia">
+                      <option value="informatique">Informatique</option>
+                      <option value="telephonie">Téléphonie</option>
+                      <option value="imageetson">Image et Son</option>
+                      <option value="jeuxvideo">Jeux Video</option>
+                 </optgroup>
+                <optgroup label="Maison">
+                        <option value="ameublement">Ameublement</option>
+                        <option value="electromenager">Electroménager</option>
+                        <option value="vetements">Vetements</option>
+                        <option value="autresmaison">Autres Maison</option>
+                </optgroup>
+                <optgroup label="Services">
+                          <option value="coursparticuliers">Cours Particuliers</option>
+                          <option value="aideadomicile">Aide à Domicile</option>
+                          <option value="autresservices">Autres Services</option>
+                </optgroup>
+              </select>
+              <!-- <span class="help-block" *ngIf="!categorie.valid && categorie.touched" style="color: red">merci de selectionner une categorie</span> -->
+        </div>
+        <div class="col-md-2">
+          <select name="natureannonce" id="" class="form-control" ngModel>
+              <option value="">Nature Annonce</option>
+            <option value="offre">Offre</option>
+            <option value="demande">Demande</option>
+          </select>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-4">
+          <select name="region" id="" class="form-control" ngModel>
+            <option value="">Region</option>
+            <option value="conakry">Conakry</option>
+            <option value="mamou">Mamou</option>
+            <option value="boke">Boké</option>
+            <option value="kindia">Kindia</option>
+            <option value="labe">Labé</option>
+            <option value="faranah">Faranah</option>
+            <option value="kankan">Kankan</option>
+            <option value="nzerekore">N'zérékoré</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+            <input type="text" name="ville" id="" placeholder="Ville" ngModel class="form-control" [(ngModel)]="groupSelected"
+                                                                      [typeahead]="villes"
+                                                                      typeaheadOptionField="name"
+                                                                      typeaheadGroupField="region">
+        </div>
+        <div class="col-md-4"> 
+          <button type="submit" class="btn btn-primary " ngModel> RECHERCHER</button>
+        </div>
+      </div>
+      <div *ngIf="categorieChoisie === 'voiture' || categorieChoisie === 'poidslourd' || categorieChoisie === 'motos' " ><hr>
+        <div class="row">
+          <div class="col-md-1">
+            <p>Prix entre</p>
+          </div>
+          <div class="col-md-2">
+            <select name="prixMin" id="" class="form-control" ngModel>
+              <option value="">Prix min</option>
+              <option value="0">0</option>
+              <option value="1000000">1 000 000</option>
+              <option value="2500000">2 500 000</option>
+              <option value="5000000">5 000 000</option>
+              <option value="10000000">10 000 000</option>
+              <option value="15000000">15 000 000</option>
+              <option value="20000000">20 000 000</option>
+              <option value="30000000">30 000 000</option>
+              <option value="40000000">40 000 000</option>
+              <option value="50000000">50 500 000</option>
+              <option value="60000000">60 000 000</option>
+              <option value="70000000">70 000 000</option>
+              <option value="80000000">80 000 000</option>
+              <option value="90000000">90 000 000</option>
+              <option value="1000000000">100 000 000</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select name="prixMax" id="" class="form-control" ngModel>
+              <option value="">Prix max</option>
+              <option value="1000000">1 000 000</option>
+              <option value="2500000">2 500 000</option>
+              <option value="5000000">5 000 000</option>
+              <option value="10000000">10 000 000</option>
+              <option value="15000000">15 000 000</option>
+              <option value="20000000">20 000 000</option>
+              <option value="30000000">30 000 000</option>
+              <option value="40000000">40 000 000</option>
+              <option value="50000000">50 500 000</option>
+              <option value="60000000">60 000 000</option>
+              <option value="70000000">70 000 000</option>
+              <option value="80000000">80 000 000</option>
+              <option value="90000000">90 000 000</option>
+              <option value="1000000000">100 000 000</option>
+              <option value="supp100000000">plus de 100 000 000</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-2">
+            <p>Année circulation entre</p>
+          </div>
+          <div class="col-md-2">
+            <select name="anneeMin" id="" class="form-control" ngModel>
+              <option value="">Année min</option>
+              <option value="2018">2018</option>
+                          <option value="2018">2017</option>
+                          <option value="2018">2016</option>
+                          <option value="2018">2015</option>
+                          <option value="2018">2014</option>
+                          <option value="2018">2013</option>
+                          <option value="2018">2012</option>
+                          <option value="2018">2011</option>
+                          <option value="2018">2010</option>
+                          <option value="2018">2009</option>
+                          <option value="2018">2008</option>
+                          <option value="2018">2007</option>
+                          <option value="2018">2006</option>
+                          <option value="2018">2005</option>
+                          <option value="2018">2004</option>
+                          <option value="2018">2003</option>
+                          <option value="2018">2002</option>
+                          <option value="2018">2001</option>
+                          <option value="2018">2000</option>
+                          <option value="2018">1999</option>
+                          <option value="2018">1998</option>
+                          <option value="2018">1997</option>
+                          <option value="2018">1996</option>
+                          <option value="2018">1995</option>
+                          <option value="2018">1994</option>
+                          <option value="2018">1993</option>
+                          <option value="2018">1992</option>
+                          <option value="2018">1991</option>
+                          <option value="2018">1990</option>
+                          <option value="2018">Avant 1990</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select name="anneeMax" id="" class="form-control" ngModel>
+              <option value="">Année max</option>
+              <option value="2018">2018</option>
+                          <option value="2018">2017</option>
+                          <option value="2018">2016</option>
+                          <option value="2018">2015</option>
+                          <option value="2018">2014</option>
+                          <option value="2018">2013</option>
+                          <option value="2018">2012</option>
+                          <option value="2018">2011</option>
+                          <option value="2018">2010</option>
+                          <option value="2018">2009</option>
+                          <option value="2018">2008</option>
+                          <option value="2018">2007</option>
+                          <option value="2018">2006</option>
+                          <option value="2018">2005</option>
+                          <option value="2018">2004</option>
+                          <option value="2018">2003</option>
+                          <option value="2018">2002</option>
+                          <option value="2018">2001</option>
+                          <option value="2018">2000</option>
+                          <option value="2018">1999</option>
+                          <option value="2018">1998</option>
+                          <option value="2018">1997</option>
+                          <option value="2018">1996</option>
+                          <option value="2018">1995</option>
+                          <option value="2018">1994</option>
+                          <option value="2018">1993</option>
+                          <option value="2018">1992</option>
+                          <option value="2018">1991</option>
+                          <option value="2018">1990</option>
+            </select>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-md-1">
+            <p>Kilomètres</p>
+          </div>
+          <div class="col-md-2">
+            <select name="kilometresMin" id="" class="form-control" ngModel>
+              <option value="">Kilomètres min</option>
+              <option value="0">0</option>
+              <option value="10000">10 000</option>
+              <option value="20000">200 000</option>
+              <option value="30000">30 000</option>
+              <option value="40000">40 000</option>
+              <option value="50000">50 000</option>
+              <option value="60000">60 000</option>
+              <option value="70000">70 000</option>
+              <option value="80000">80 000</option>
+              <option value="90000">90 000</option>
+              <option value="100000">100 000</option>
+              <option value="125000">125 000</option>
+              <option value="150000">150 000</option>
+              <option value="175000">175 000</option>
+              <option value="200000">200 000</option>
+              <option value="250000">250 000</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select name="kilometresMax" id="" class="form-control" ngModel>
+              <option value="">Kilomètres max</option>
+              <option value="10000">10 000</option>
+              <option value="20000">200 000</option>
+              <option value="30000">30 000</option>
+              <option value="40000">40 000</option>
+              <option value="50000">50 000</option>
+              <option value="60000">60 000</option>
+              <option value="70000">70 000</option>
+              <option value="80000">80 000</option>
+              <option value="90000">90 000</option>
+              <option value="100000">100 000</option>
+              <option value="125000">125 000</option>
+              <option value="150000">150 000</option>
+              <option value="175000">175 000</option>
+              <option value="200000">200 000</option>
+              <option value="250000">250 000</option>
+              <option value="sup250000">plus de 250 000</option>
+            </select>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-2" *ngIf="categorieChoisie !== 'motos' ">
+            <select name="boiteVitesse" id="" class="form-control" ngModel>
+                <option value="">Boite vitesse</option>
+                <option value="manuelle">Manuelle</option>
+                <option value="automatique">Automatique</option>
+            </select>
+          </div>
+          <div class="col-md-2" *ngIf="categorieChoisie !== 'motos' ">
+            <select name="energie" id="" class="form-control" ngModel>
+              <option value="">Energie</option>
+              <option value="essence">essence</option>
+              <option value="diesel">diesel</option>
+              <option value="electrique">electrique</option>
+              <option value="hybride">hybride</option>
+            </select>
+          </div>
+          <div class="col-md-2" *ngIf="categorieChoisie !== 'motos' " >
+            <select name="anneeMax" id="" class="form-control" ngModel>
+              <option value="">Marque</option>
+              <option value="audi">Audi</option>
+                          <option value="bmw">BMW</option>
+                          <option value="citroen">Citroën</option>
+                          <option value="fiat">Fiat</option>
+                          <option value="ford">Ford</option>
+                          <option value="mercedes">Mercedes</option>
+                          <option value="opel">Opel</option>
+                          <option value="peugeot">Peugeot</option>
+                          <option value="renault">Renault</option>
+                          <option value="toyota">Toyota</option>
+                          <option value="volvo">Volvo</option>
+                          <option value="kia">Kia</option>
+                          <option value="mitsubishi">Mitsubishi</option>
+            </select>
+          </div>
+          <div class="col-md-2" *ngIf="categorieChoisie === 'motos' ">
+            <p>Cylindrée entre</p>
+          </div>
+          <div class="col-md-2" *ngIf="categorieChoisie === 'motos' " >
+              <select name="cylindreeMin" id="" class="form-control" ngModel>
+                <option value="">Cylindrée min</option>
+                <option value="audi">Audi</option>
+                            <option value="0">0</option>
+                            <option value="50">50</option>
+                            <option value="80">80</option>
+                            <option value="125">125</option>
+                            <option value="250">250</option>
+                            <option value="500">500</option>
+                            <option value="600">600</option>
+                            <option value="750">750</option>
+                            <option value="1000">1000</option>
+              </select>
+            </div>
+            <div class="col-md-2" *ngIf="categorieChoisie === 'motos' " >
+                <select name="cylindreeMax" id="" class="form-control" ngModel>
+                  <option value="">Cylindrée max</option>
+                  <option value="50">50</option>
+                            <option value="80">80</option>
+                            <option value="125">125</option>
+                            <option value="250">250</option>
+                            <option value="500">500</option>
+                            <option value="600">600</option>
+                            <option value="750">750</option>
+                            <option value="1000">1000</option>
+                            <option value="sup1000">plus de 1000</option>
+                </select>
+              </div>
+        </div>
+      </div>
+      <div *ngIf="categorieChoisie === 'venteImmobilier' || categorieChoisie === 'locationImmobilier' "><hr>
+        <div class="row">
+            <div class="col-md-1">
+              <p>Prix entre</p>
+            </div>
+            <div class="col-md-2">
+              <select name="prixMin" id="" class="form-control" ngModel>
+                <option value="">Prix min</option>
+                <option value="0">0</option>
+                <option value="1000000">1 000 000</option>
+                <option value="2500000">2 500 000</option>
+                <option value="5000000">5 000 000</option>
+                <option value="10000000">10 000 000</option>
+                <option value="15000000">15 000 000</option>
+                <option value="20000000">20 000 000</option>
+                <option value="30000000">30 000 000</option>
+                <option value="40000000">40 000 000</option>
+                <option value="50000000">50 500 000</option>
+                <option value="60000000">60 000 000</option>
+                <option value="70000000">70 000 000</option>
+                <option value="80000000">80 000 000</option>
+                <option value="90000000">90 000 000</option>
+                <option value="1000000000">100 000 000</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <select name="prixMax" id="" class="form-control" ngModel>
+                <option value="">Prix max</option>
+                <option value="1000000">1 000 000</option>
+                <option value="2500000">2 500 000</option>
+                <option value="5000000">5 000 000</option>
+                <option value="10000000">10 000 000</option>
+                <option value="15000000">15 000 000</option>
+                <option value="20000000">20 000 000</option>
+                <option value="30000000">30 000 000</option>
+                <option value="40000000">40 000 000</option>
+                <option value="50000000">50 500 000</option>
+                <option value="60000000">60 000 000</option>
+                <option value="70000000">70 000 000</option>
+                <option value="80000000">80 000 000</option>
+                <option value="90000000">90 000 000</option>
+                <option value="1000000000">100 000 000</option>
+                <option value="supp100000000">plus de 100 000 000</option>
+              </select>
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2">
+              <p>Surface en m2 entre</p>
+            </div>
+            <div class="col-md-2">
+              <select name="surfaceMin" id="" class="form-control" ngModel>
+                <option value="">Surface min</option>
+                <option value="0">0</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <option value="60">60</option>
+                            <option value="70">70</option>
+                            <option value="80">80</option>
+                            <option value="90">90</option>
+                            <option value="100">100</option>
+                            <option value="125">125</option>
+                            <option value="150">150</option>
+                            <option value="175">175</option>
+                            <option value="200">200</option>
+                            <option value="250">250</option>
+                            <option value="300">300</option>
+                            <option value="350">350</option>
+                            <option value="400">400</option>
+                            <option value="450">450</option>
+                            <option value="500">500</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <select name="surfaceMax" id="" class="form-control" ngModel>
+                <option value="">Surface max</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="60">60</option>
+                <option value="70">70</option>
+                <option value="80">80</option>
+                <option value="90">90</option>
+                <option value="100">100</option>
+                <option value="125">125</option>
+                <option value="150">150</option>
+                <option value="175">175</option>
+                <option value="200">200</option>
+                <option value="250">250</option>
+                <option value="300">300</option>
+                <option value="350">350</option>
+                <option value="400">400</option>
+                <option value="450">450</option>
+                <option value="500">500</option>
+                <option value="supp500">plus de 500</option>
+              </select>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <input type="checkbox" name="maison" id="maison">
+              <label for="maison">Maison</label>&nbsp;
+
+              <input type="checkbox" name="appartement" id="appartement">
+              <label for="appartement">Appartement</label>&nbsp;
+
+              <input type="checkbox" name="terrain" id="terrain">
+              <label for="terrain">Terrain</label>&nbsp;
+
+              <input type="checkbox" name="parking" id="parking">
+              <label for="parking">Parking</label>&nbsp;
+
+              <input type="checkbox" name="autre" id="autre">
+              <label for="autre">Autre</label>
+            </div>
+          </div>
+      </div>
+      <div *ngIf=" categorieChoisie === 'informatique' || categorieChoisie === 'telephonie' || categorieChoisie === 'imageetson' || categorieChoisie === 'jeuxvideo' || categorieChoisie === 'ameublement' || categorieChoisie === 'electromenager' || categorieChoisie === 'vetements' || categorieChoisie === 'autresmaison' || categorieChoisie === 'coursparticuliers' || categorieChoisie === 'aideadomicile' || categorieChoisie === 'autresservices' || categorieChoisie === 'velo' "><hr>
+         <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              <div class="row">
+                <div class="col-md-2">
+                  <p>Prix entre</p>
+                </div>
+                <div class="col-md-5">
+                    <select name="prixMin" id="" class="form-control" ngModel>
+                      <option value="">Prix min</option>
+                      <option value="0">0</option>
+                      <option value="50000">50 000</option>
+                      <option value="100000">100 000</option>
+                      <option value="500000">500 000</option>
+                      <option value="1000000">1 000 000</option>
+                      <option value="10000000">10 000 000</option>
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <select name="prixMax" id="" class="form-control" ngModel>
+                      <option value="">Prix max</option>
+                      <option value="50000">50 000</option>
+                      <option value="100000">100 000</option>
+                      <option value="500000">500 000</option>
+                      <option value="1000000">1 000 000</option>
+                      <option value="10000000">10 000 000</option>
+                      <option value="supp10000000">Plus de 10 000 000</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+          </div>  
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+        <div class="form-group form-inline">
+            <label> Type: </label>&nbsp;
+            <div class="radio" *ngFor="let typeannonce of typeAnnonce">
+                <label>
+                  <input type="radio" name="typeannonce" 
+                          id="typeannonce" 
+                          [value]="typeannonce" ngModel
+                          (change)="onselectionTypeAnnonce(typeannonce)">{{typeannonce}} &nbsp;
+                </label>
+              </div>
+          </div>
+    </div>
+    <div class="col-md-2">
+        <select name="" id="" class="form-control" (change)="trierSelection($event.target.value)" ngModel>
+            <option value="">Par date</option>
+            <option value="prix"> Par Prix</option>
+            <option value="date">Par Date</option>
+          </select>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-5">
+      <!-- si on fait une recherche, alors on affiche les résultat de la recheches, sinon on affiche toutes les annonces -->
+        <div *ngIf="annoncesRecherche; else pasDeRecherche">
+          <app-annonce-liste [lesAnnoncesRecherche]="annoncesRecherche"></app-annonce-liste>
+        </div>
+        <ng-template #pasDeRecherche>
+          <div *ngIf="typeChoisiPaticulier" >
+              <app-annonce-liste [typeChoisiPaticulier]="[(typeChoisiPaticulier)]"></app-annonce-liste>
+          </div>
+          <div *ngIf="typeChoisiProfessionnel" >
+              <app-annonce-liste [typeChoisiProfessionnel]="[(typeChoisiProfessionnel)]"></app-annonce-liste>
+          </div>
+          <div *ngIf="typeChoisiTous" >
+              <app-annonce-liste [typeChoisiTous]="[(typeChoisiTous)]" [tri]="tri"></app-annonce-liste>
+          </div>
+        </ng-template>
+    </div>
+    <div class="col-md-7">
+      <router-outlet></router-outlet>
+    </div> 
+  </div>
+
+

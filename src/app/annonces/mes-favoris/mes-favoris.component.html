@@ -1,0 +1,61 @@
+<div *ngIf="!usernameLogged" >
+    <p>
+      <button class="btn btn-info" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
+    </p>
+</div>
+<div *ngIf="usernameLogged">
+  <tabset>
+    <tab heading="Mes offres Favories" id="tab1">
+      <div *ngFor="let favori of favoris" >
+        <div *ngIf="favori.annonce.natureAnnonce === 'offre' " >
+            <a
+            style="cursor: pointer;"            
+            class="list-group-item clearfix">
+            <div class="pull-right" style="margin-left: 10px">
+                <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">consulter annonce</button><br>
+                <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">supprimer Favori</button>
+            </div>
+            <div class="pull-right" style="text-align: right;  margin-right: 40px;">
+              <h4 class="list-group-item-heading">{{ favori.annonce.titre }}</h4>
+              <p class="list-group-item-text"> <span style="font-weight: bold">{{ favori.annonce.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ favori.annonce.ville }}</span></p><br>
+              <p class="list-group-item-text" style="color: darkblue;">{{ favori.annonce.dateStringDepot }}</p>
+            </div>
+            <span class="pull-left">
+              <img
+                src="http://localhost:8080/images/{{favori.annonce.cheminImage}}"
+                alt="{{ favori.annonce.nom }}"
+                class="img-responsive" 
+                style="max-height: 85px; max-width: 175px;">
+            </span>
+            </a>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Mes demandes Favories">
+      <div *ngFor="let favori of favoris" >
+          <div *ngIf="favori.annonce.natureAnnonce === 'demande'  " >
+              <a
+              style="cursor: pointer;"            
+              class="list-group-item clearfix">
+              <div class="pull-right" style="margin-left: 10px">
+                  <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">consulter annonce</button><br>
+                  <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">supprimer Favori</button>
+              </div>
+              <div class="pull-right" style="text-align: right;  margin-right: 40px;">
+                <h4 class="list-group-item-heading">{{ favori.annonce.titre }}</h4>
+                <p class="list-group-item-text"> <span style="font-weight: bold">{{ favori.annonce.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ favori.annonce.ville }}</span></p><br>
+                <p class="list-group-item-text" style="color: darkblue;">{{ favori.annonce.dateStringDepot }}</p>
+              </div>
+              <span class="pull-left">
+                <img
+                  src="http://localhost:8080/images/{{favori.annonce.cheminImage}}"
+                  alt="{{ favori.annonce.nom }}"
+                  class="img-responsive" 
+                  style="max-height: 85px; max-width: 175px;">
+              </span>
+              </a>
+          </div>
+        </div>
+    </tab>
+  </tabset>
+</div>

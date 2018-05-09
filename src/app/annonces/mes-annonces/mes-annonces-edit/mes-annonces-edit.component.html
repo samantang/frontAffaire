@@ -1,0 +1,391 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">Modification de l'annonce</h2>
+    </div>
+    <div class="panel-body">
+        <h4 style="text-align: center; font-weight: bold; font-size: x-large; color: brown" class="panel-title">Important: si vous modifiez une annonce, elle ne sera visible qu'après validation</h4><br>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group">
+                <!-- <label  style="color: rgb(30, 56, 145)">Tous les champs sont obligatoires</label><br> -->
+              <label for="categorie">Categorie</label><br>
+              <select (change)="onChange($event.target.value)" [(ngModel)]="annonce.categorie" fomControlName="categorie" name="categorie" id="categorie" class="form-control custom-select" ngModel required #categorie="ngModel">
+                <option selected>Selectionnez</option>
+                <optgroup label="Vehicule">
+                  <option value="voiture">Voiture</option>
+                  <option value="poidslourd">Poids Lourd</option>
+                  <option value="velo">Velo</option>
+                </optgroup>
+                <optgroup label="Immobilier">
+                    <option value="vente">Vente</option>
+                    <option value="location">Location</option>
+                </optgroup>
+                <optgroup label="Multimedia">
+                      <option value="informatique">Informatique</option>
+                      <option value="telephonie">Téléphonie</option>
+                      <option value="imageetson">Image et Son</option> 
+                      <option value="jeuxvideo">Jeux Video</option>
+                 </optgroup>
+                <optgroup label="Maison">
+                        <option value="ameublement">Ameublement</option>
+                        <option value="electromenager">Electroménager</option>
+                        <option value="vetements">Vetements</option>
+                        <option value="autresmaison">Autres Maison</option>
+                </optgroup>
+                <optgroup label="Services">
+                          <option value="coursparticuliers">Cours Particuliers</option>
+                          <option value="aideadomicile">Aide à Domicile</option>
+                          <option value="autresservices">Autres Services</option>
+                </optgroup>
+              </select>
+              <span class="help-block" *ngIf="!categorie.valid && categorie.touched" style="color: red">merci de selectionner une categorie</span>
+            </div>
+            <div *ngIf="categorieChoisie === 'voiture' || categorieChoisie === 'poidslourd'"  >
+              <div class="well">
+                <div style="text-align: center; color: blue; font-weight: bold;">Informations sur le Vehicule</div><br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="marque">Marque</label><br>
+                      <select name="marque" id="marque" class="form-control custom-select"  required  [(ngModel)]="annonce.marque">
+                        <option value="">selectionner</option>
+                        <optgroup label="Marques Courantes">
+                            <option value="audi">Audi</option>
+                            <option value="bmw">BMW</option>
+                            <option value="citroen">Citroën</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="ford">Ford</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="opel">Opel</option>
+                            <option value="peugeot">Peugeot</option>
+                            <option value="renault">Renault</option>
+                            <option value="toyota">Toyota</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="kia">Kia</option>
+                            <option value="mitsubishi">Mitsubishi</option>
+                        </optgroup>
+                        <optgroup label="Autres Marques">
+                            <option value="autres">Autres</option>
+                        </optgroup>
+                      </select>
+                      <span class="help-block" *ngIf="!marque.valid && marque.touched" style="color: red">une marque est nécessaire</span>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="modele">Modèle</label>
+                      <input type="text" name="modele" id="modele" class="form-control" ngModel [(ngModel)]="annonce.modele">
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="anneemodele">Année modèle</label><br>
+                      <select name="anneemodele" id="anneemodele" class="form-control custom-select" ngModel [(ngModel)]="annonce.anneeModele">
+                            <option value="2018">2018</option>
+                            <option value="2018">2017</option>
+                            <option value="2018">2016</option>
+                            <option value="2018">2015</option>
+                            <option value="2018">2014</option>
+                            <option value="2018">2013</option>
+                            <option value="2018">2012</option>
+                            <option value="2018">2011</option>
+                            <option value="2018">2010</option>
+                            <option value="2018">2009</option>
+                            <option value="2018">2008</option>
+                            <option value="2018">2007</option>
+                            <option value="2018">2006</option>
+                            <option value="2018">2005</option>
+                            <option value="2018">2004</option>
+                            <option value="2018">2003</option>
+                            <option value="2018">2002</option>
+                            <option value="2018">2001</option>
+                            <option value="2018">2000</option>
+                            <option value="2018">1999</option>
+                            <option value="2018">1998</option>
+                            <option value="2018">1997</option>
+                            <option value="2018">1996</option>
+                            <option value="2018">1995</option>
+                            <option value="2018">1994</option>
+                            <option value="2018">1993</option>
+                            <option value="2018">1992</option>
+                            <option value="2018">1991</option>
+                            <option value="2018">1990</option>
+                            <option value="2018">Avant 1990</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="kilometrage">Kilométrage</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control" placeholder="Km" aria-describedby="basic-addon2" name="kilometrage" ngModel required pattern="^[1-9]+[0-9]*$" #kilometrage="ngModel" [(ngModel)]="annonce.kilometrage">
+                          <span class="input-group-addon" id="basic-addon2">Km</span>
+                        </div>
+                    </div>
+                    <span class="help-block" *ngIf="!kilometrage.valid && kilometrage.touched" style="color: red">Un nombre positif est nécessaire</span>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="carburant">Carburant</label><br>
+                        <select name="carburant" id="carburant" class="form-control custom-select" ngModel required #carburant [(ngModel)]="annonce.carburant">
+                              <option value="essence">Essence</option>
+                              <option value="diesel">Diesel</option>
+                              <option value="electrique">Electrique</option>
+                              <option value="hybride">Hybride</option>
+                              <option value="autrecarburant">Autre</option>
+                        </select>
+                        <span class="help-block" *ngIf="!carburant.valid && carburant.touched" style="color: red">type de carburant nécessaire</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="boitedevitesse">Boite de vitesse</label><br>
+                            <select name="boitedevitesse" id="boitedevitesse" class="form-control custom-select" ngModel required #boitedevitesse="ngModel" [(ngModel)]="annonce.boiteDeVitesse">
+                                  <option value="manuelle">Manuelle</option>
+                                  <option value="automatique">Automatique</option>
+                            </select>
+                            <span class="help-block" *ngIf="!boitedevitesse.valid && boitedevitesse.touched" style="color: red">boite de vitesse nécessaire</span>
+                          </div>
+                    </div>
+                </div>
+              </div>  
+            </div>
+            <div *ngIf="categorieChoisie === 'velo'"  >
+              <div class="well">
+                  <div style="text-align: center; color: blue; font-weight: bold;">Informations sur le velo</div><br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="typevelo">Type du</label><br>
+                    <select name="typevelo" id="typevelo" class="form-control" ngModel>
+                      <option value="vtt">VTT</option>
+                      <option value="electrique">Electrique</option>
+                      <option value="autresvelos">Autres Velos</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nbvitesses">Nombre de Vitesses</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="nb vitesses" ngModel>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="categorieChoisie === 'location' "  >
+                <div class="well">
+                    <div style="text-align: center; color: blue; font-weight: bold;">Informations sur la location</div><br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="typelocation">Type du bien</label><br>
+                      <select name="typelocation" id="typelocation" ngModel class="form-control">
+                        <option value="maison">Maison</option>
+                        <option value="appartement">Appartement</option>
+                        <option value="bureauetcommerce">Bureaux et Commerces</option>
+                        <option value="terrain">Terrain</option>
+                        <option value="parking">Parking</option>
+                        <option value="autrelocation">Autres Biens</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="meublenonmeuble">Meublé/Non</label><br>
+                          <select name="meublenonmeuble" id="meublenonmeuble" ngModel class="form-control">
+                            <option value="meuble">Meublé</option>
+                            <option value="nonmeuble">Non Meublé</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div *ngIf="categorieChoisie === 'vente' "  >
+                <div class="well">
+                    <div style="text-align: center; color: blue; font-weight: bold;">Informations sur la Vente</div><br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="typelocation">Type du bien</label><br>
+                      <select name="typelocation" id="typelocation" class="form-control" ngModel>
+                        <option value="maison">Maison</option>
+                        <option value="appartement">Appartement</option>
+                        <option value="bureauetcommerce">Bureaux et Commerces</option>
+                        <option value="terrain">Terrain</option>
+                        <option value="parking">Parking</option>
+                        <option value="autrelocation">Autres Biens</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="meublenonmeuble">Meublé / Non Meublé</label><br>
+                          <select name="meublenonmeuble" id="meublenonmeuble" class="form-control" ngModel>
+                            <option value="meuble">Meublé</option>
+                            <option value="nonmeuble">Non Meublé</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label >Type de l'Annonce</label><br>
+                <div class="radio" *ngFor="let typeannonce of typeDeLannonce" >
+                  <label>
+                    <input type="radio" name="typeannonce" id="typeannonce" [value]="typeannonce" ngModel required>{{typeannonce}}
+                  </label>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="titre">Titre Annonce</label><br>
+              <input type="text" name="titre" id="titre" class="form-control" placeholder="titre annonce"[(ngModel)]="annonce.titre" value="annonce.titre">
+            </div>
+            <div class="form-group">
+                <label for="prix">Prix Annonce</label><br>
+                <div class="input-group">
+                  <input type="number" id="prix"  class="form-control" placeholder="prix annonce"  required pattern="^[1-9]+[0-9]*$" ngModel name="prix" #prix="ngModel" [(ngModel)]="annonce.prix">
+                  <span class="input-group-addon">GNF</span> 
+                </div>
+                <span class="help-block" *ngIf="!prix.valid && prix.touched" style="color: red">merci de mentionner un prix positif</span>
+            </div>
+            <div class="form-group">
+                <label for="titre">Ville</label><br>
+                <input type="text" name="ville" id="ville" class="form-control" placeholder="ville annonce" required ngModel [(ngModel)]="annonce.ville">
+            </div>
+            <label for="region">Region</label><br>
+                <select name="region" id="region" class="form-control custom-select" ngModel required #region="ngModel" [(ngModel)]="annonce.region">
+                          <option value="conakry">Conakry</option>
+                          <option value="kindia">Kindia</option>
+                          <option value="boke">Boké</option>
+                          <option value="mamou">Mamou</option>
+                          <option value="labe">Labé</option>
+                          <option value="faranah">Faranah</option>
+                          <option value="kankan">Kankan</option>
+                          <option value="nzerekore">N'zérékoré</option>
+              </select>
+          </div>
+          <div class="col-md-7">
+            <div class="row well">
+              <div class="col-md-5">
+                <div class="form-group">
+                    <label>Vous êtes</label><br>
+                    <div class="radio" *ngFor="let vend of vendeur" >
+                      <label> 
+                        <input type="radio" name="vend" id="vend" [value]="vend" ngModel required>{{vend}}
+                      </label>
+                    </div>
+                </div>
+              </div>  
+                <div class="col-md-7">
+                    Si vous agissez à titre professionnel, vous devez créer un Compte professionnel. A défaut, 
+                    en application de l’article XXX du Code de la consommation qui sanctionne les pratiques commerciales trompeuses, 
+                    vous encourez notamment une peine d’emprisonnement de 2 ans et une amende de 000 GNG. Pour plus d'informations, 
+                    consultez vos droits et obligations.
+                </div>
+            </div>
+            <label for="textarea">Votre message :</label>
+            <textarea id="textarea" class="form-control" rows="12" style="resize: none" name="description" ngModel required [(ngModel)]="annonce.description"></textarea>
+          </div>
+        </div><br><br>
+        <!-- <div class="row"> 
+          <div class="col-md-5">
+              
+          </div>
+                    
+          <div class="col-md-7">
+             
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="col-md-10 well off col-md-offset-1 "> 
+            <div class="col-md-3">
+              <div *ngIf="annonce.cheminImage" >
+                  <img
+                  src="http://localhost:8080/images/{{annonce.cheminImage}}"
+                  alt="{{ annonce.nom }}"
+                  class="img-responsive" 
+                  style="max-height: 85px;"> 
+              </div>
+            </div>
+            <div class="col-md-3">
+                <div *ngIf="annonce.cheminImage1" >
+                    <img
+                    src="http://localhost:8080/images/{{annonce.cheminImage1}}"
+                    alt="{{ annonce.nom }}"
+                    class="img-responsive" 
+                    style="max-height: 85px;"> 
+                </div>
+              </div>
+              <div class="col-md-3">
+                  <div *ngIf="annonce.cheminImage2" >
+                      <img
+                      src="http://localhost:8080/images/{{annonce.cheminImage2}}"
+                      alt="{{ annonce.nom }}"
+                      class="img-responsive" 
+                      style="max-height: 85px;"> 
+                  </div>
+              </div> 
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 well off col-md-offset-1 "> 
+                <h6 style="text-align: center; font-weight: bold; font-size: x-large; color: rgb(11, 99, 182)" class="panel-title">Choissez la photo correspondante pour changer</h6><br>
+                <div class="col-md-3">
+                    <label class="uploader">
+                      <img 
+                          [src]="url" 
+                          class="img-responsive" style="max-width: 100px; max-height: 170px"/>
+                      
+                      <input #fileSelect type="file" name="file" accept="image/*"
+                          (change)="annonceService.enregisteNom(fileSelect.files)"
+                          (change)="readUrl($event)">
+                    </label>
+                  </div>
+                  <div class="col-md-3">
+
+                      <label class="uploader">
+                          <img 
+                              [src]="url1" 
+                              class="img-responsive" style="max-width: 100px; max-height: 170px"/>
+                          
+                          <input #fileSelect1 type="file" name="file" accept="image/*"
+                              (change)="annonceService.enregisteNom1(fileSelect1.files)"
+                              (change)="readUrl1($event)">
+                        </label>
+                  </div>
+                  <div class="col-md-3">
+                      <label class="uploader">
+                          <img 
+                              [src]="url2" 
+                              class="img-responsive" style="max-width: 100px; max-height: 170px"/>
+                          
+                          <input #fileSelect2 type="file" name="file" accept="image/*"
+                              (change)="annonceService.enregisteNom2(fileSelect2.files)"
+                              (change)="readUrl2($event)">
+                        </label>
+                  </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="form-group form-inline">
+                <label style="color: rgb(50, 190, 22)" for="numerovisible">Voulez vous que votre numéro de Téléphone soit visible pour cette annonce ?</label>
+                <input type="checkbox" name="numerovisible" id="numerovisible" class="form-control" checked ngModel >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+              <button
+                type="submit"
+                class="btn btn-success"
+                [disabled]="!f.valid">Valider</button>
+              <button type="button" class="btn btn-danger" (click)="onCancel()">Annuler</button>
+            </div>
+          </div>
+      </form>  
+    </div>
+</div>     
