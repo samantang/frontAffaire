@@ -48,7 +48,7 @@ export class AnnonceServiceService {
     sendMessage(message: string) {
         this.subject.next({ text: message });
         console.log('send the messageService .....' + message);
-    }
+    }  
 
     clearMessage() {
         this.subject.next();
