@@ -86,7 +86,7 @@ import { AnnonceServiceService } from './annonces/annonce-service.service';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
