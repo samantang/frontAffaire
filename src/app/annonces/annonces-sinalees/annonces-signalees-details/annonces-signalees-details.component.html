@@ -37,13 +37,28 @@
   </div>
   <div class="row">
     <div class="col-md-12">
+
       <div class="col-md-4">
-        <div *ngIf="annonce.etatPublication == 'depublie'">
-          <div class="btn btn-info">Republie</div>
+        <div *ngIf="annonce.etatPublication == 'depublie'; else depublieAnnonce">
+          <div class="btn btn-info" (click)="republierAnnonce()"><span class="glyphicon glyphicon-thumbs-up" ></span><br>Republier l'annonce</div>
         </div>
-        <button class="btn btn-danger" (click)="depublierAnnonce()"><span class="glyphicon glyphicon-thumbs-down" ></span><br>Dépublier l'annonce</button>
+
+        
+
+        <ng-template #depublieAnnonce>
+            <button class="btn btn-danger"  (click)="openModal(template)"><span class="glyphicon glyphicon-thumbs-down" ></span><br>Dépublier l'annonce</button>
+        </ng-template>
       </div>
       <div class="col-md-4"><button class="btn btn-warning" (click)="onEcrireMessage()"><span class="glyphicon glyphicon-envelope"></span><br>Ecrire un message à l'annonceur</button></div>
     </div>
   </div><br>
+
+  <ng-template #template>
+      <div class="modal-body text-center">
+        <p>Voulez vous vraiment dépublier cette annonce?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >Oui Déplublier</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >Non Annuler</button>
+      </div>
+    </ng-template>
+
   

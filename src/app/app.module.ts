@@ -97,7 +97,7 @@ import { AnnonceServiceService } from './annonces/annonce-service.service';
     PaginationModule.forRoot(),
     TooltipModule.forRoot(),
     TabsModule.forRoot(),
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
   ],
   providers: [LoginServiceService, AnnonceServiceService],
   bootstrap: [AppComponent]

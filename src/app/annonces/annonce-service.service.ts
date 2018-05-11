@@ -132,7 +132,7 @@ export class AnnonceServiceService {
     const url = 'http://localhost:8080/get-user/annonces-signalees';
     // return this.http.get(url);
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
-    return this.http.post(url,  corps,  {headers: headers});
+    return this.http.post(url,  this.usernameLogged,  {headers: headers});
   }
 
   changerPagination (page: number) {
