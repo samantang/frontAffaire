@@ -17,10 +17,12 @@ export class UserModel {
     public password: string;
     public erreur: string;
     public authorities: Authorities [];
+    public dateInscriptionString: string;
 
     constructor (id: number, username: string, email: string, phone: number, firstName: string,
         lastName: string, ville: string, region: string, type: string, nomSociete: string, numeroSiretSocite: string,
-        adresseSocite: string, sitewebSocite: string, password: string, erreur: string, authorities: Authorities []) {
+        adresseSocite: string, sitewebSocite: string, password: string, erreur: string, authorities: Authorities [],
+        dateInscriptionString: string) {
 
         this.id = id;
         this.username = username;
@@ -38,5 +40,6 @@ export class UserModel {
         this.password = password;
         this.erreur = erreur;
         this.authorities = authorities;
+        this.dateInscriptionString = dateInscriptionString;
     }
 }

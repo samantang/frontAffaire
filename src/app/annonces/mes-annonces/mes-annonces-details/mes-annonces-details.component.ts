@@ -58,5 +58,11 @@ export class MesAnnoncesDetailsComponent implements OnInit {
       error => console.log(error)
     );
   }
+  onSupprimerAnnonce(){
+    this.annonceService.suppirmerAnnonce(this.id).subscribe(
+      data => console.log(this.annonce = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
+      error => console.log(error)
+    );
+  }
 
 }

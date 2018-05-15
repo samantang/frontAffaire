@@ -23,6 +23,7 @@ import { LoginComponent } from './header/login/login.component';
 import { SendMessageComponent } from './annonces/send-message/send-message.component';
 import { MesInfosComponent } from './annonces/mes-infos/mes-infos.component';
 import { MesActivitesComponent } from './annonces/mes-activites/mes-activites.component';
+import { UsersComponent } from './annonces/users/users.component';
 
 
 
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'send-message/:id', component: SendMessageComponent},
   {path: 'mes-infos', component: MesInfosComponent},
-  {path: 'mes-activites', component: MesActivitesComponent}
+  {path: 'mes-activites', component: MesActivitesComponent},
+  {path: 'users', component: UsersComponent}
 ];
 
 @NgModule({

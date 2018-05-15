@@ -123,7 +123,7 @@ export class LoginComponent implements OnInit {
 
     this.user = new UserModel(this.id, this.username, this.email, this.phone,
        this.firstName, this.lastName, this.ville, this.region, this.type,
-       this.nomSociete, this.numeroSiretSocite, this.adresseSocite, this.sitewebSocite, this.password, '', null);
+       this.nomSociete, this.numeroSiretSocite, this.adresseSocite, this.sitewebSocite, this.password, '', null, '');
 
        this.loginService.signUp(this.user)
        .subscribe(

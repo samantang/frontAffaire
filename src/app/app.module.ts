@@ -47,6 +47,7 @@ import { MesInfosComponent } from './annonces/mes-infos/mes-infos.component';
 import { MesActivitesComponent } from './annonces/mes-activites/mes-activites.component';
 import { MesActivitesItemComponent } from './annonces/mes-activites/mes-activites-item/mes-activites-item.component';
 import { AnnonceServiceService } from './annonces/annonce-service.service';
+import { UsersComponent } from './annonces/users/users.component';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { AnnonceServiceService } from './annonces/annonce-service.service';
     MesInfosComponent,
     MesActivitesComponent,
     MesActivitesItemComponent,
+    UsersComponent,
 
   ],
   imports: [

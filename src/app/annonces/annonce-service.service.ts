@@ -58,9 +58,11 @@ export class AnnonceServiceService {
         return this.subject.asObservable();
     }
 
-  // 
-
-
+    getUsers() {
+      const url = 'http://localhost:8080/get-user/get-users';
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post(url, this.usernameLogged, {headers: headers});
+    }
 
   getAnnoncesApi() {
     const url = 'http://localhost:8080/get-annonces';
@@ -401,6 +403,11 @@ export class AnnonceServiceService {
       let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
       return this.http.post('http://localhost:8080/get-user/republier-annonce/' + id + '', usernameLogged, {headers: headers});
     }
+    suppirmerAnnonce(id: number) {
+      const usernameLogged = localStorage.getItem('username');
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post('http://localhost:8080/get-user/supprimer-annonce/' + id + '', usernameLogged, {headers: headers});
+    }
     sendMessageToSomeone(id: number, userMessage: UserMessage) {
      console.log(id + '' + userMessage.message);
       let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
@@ -409,6 +416,11 @@ export class AnnonceServiceService {
           succes => console.log(succes),
           error => console.log(error)
         );
+    }
+    setModerateur(username: string){
+      const usernameLogged = localStorage.getItem('username');
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post('http://localhost:8080/get-user/set-moderateur/' + username + '', usernameLogged, {headers: headers});
     }
 
   }

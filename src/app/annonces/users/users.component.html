@@ -1,0 +1,199 @@
+<div *ngIf="!usernameLogged" >
+    <p>
+      <button class="btn btn-info" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
+    </p>
+</div>
+<div *ngIf="usernameLogged">
+    <tabset>
+        <tab heading="PARTICULIERS" id="tab1"><br>
+              <div *ngFor="let user of users" >
+                <div *ngFor="let  auth of user.authorities" >
+                  <div *ngIf="auth.authority == 'ROLE_PARTICULIER'">
+                      <a
+                      style="cursor: pointer;"            
+                      class="list-group-item clearfix">
+                      <div class="pull-right" style="margin-left: 10px">
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                      </div>
+                      <div class="pull-right" style="text-align: right;  margin-right: 40px;">
+                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
+                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
+                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                        <form action="">
+
+                        </form>
+                      </div>
+                      <span class="pull-left">
+                        <img
+                          src="http://localhost:8080/images/accueil.jpg"
+                          alt="accueil"
+                          class="img-responsive" 
+                          style="max-height: 85px; max-width: 175px;">
+                      </span>
+                      <div class="pull-left" style="margin: 10px; font-weight: bold; color: darkturquoise">
+                          <p *ngIf="user.nom; else pasdenom">{{user.nom}}</p>
+                          <ng-template #pasdenom>
+                            <p >{{user.email}}</p>
+                          </ng-template>
+                          <p>Inscrit: {{user.dateInscriptionString}}</p>
+                      </div>
+                      </a>
+                  </div>
+                </div>
+              </div>
+        </tab>
+        <tab heading="PROFESSIONNELS"><br>
+            <div *ngFor="let user of users" >
+                <div *ngFor="let  auth of user.authorities" >
+                  <div *ngIf="auth.authority == 'ROLE_PROFESSIONEL'">
+                      <a
+                      style="cursor: pointer;"            
+                      class="list-group-item clearfix">
+                      <div class="pull-right" style="margin-left: 10px">
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                      </div>
+                      <div class="pull-right" style="text-align: right;  margin-right: 40px;">
+                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
+                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
+                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                        <form action="">
+
+                        </form>
+                      </div>
+                      <span class="pull-left">
+                        <img
+                          src="http://localhost:8080/images/accueil.jpg"
+                          alt="accueil"
+                          class="img-responsive" 
+                          style="max-height: 85px; max-width: 175px;">
+                      </span>
+                      <div class="pull-left" style="margin: 10px; font-weight: bold; color: darkturquoise">
+                          <p *ngIf="user.nom; else pasdenom">{{user.nom}}</p>
+                          <ng-template #pasdenom>
+                            <p >{{user.email}}</p>
+                          </ng-template>
+                          <p>Inscrit: {{user.dateInscriptionString}}</p>
+                      </div>
+                      </a>
+                  </div>
+                </div>
+              </div>
+        </tab>
+        <tab heading="MODERATEURS"><br>
+            <div *ngFor="let user of users" >
+                <div *ngFor="let  auth of user.authorities" >
+                  <div *ngIf="auth.authority == 'ROLE_MODERATEUR'">
+                      <a
+                      style="cursor: pointer;"            
+                      class="list-group-item clearfix">
+                      <div class="pull-right" style="margin-left: 10px">
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                      </div>
+                      <div class="pull-right" style="text-align: right;  margin-right: 40px;">
+                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
+                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
+                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                        <form action="">
+
+                        </form>
+                      </div>
+                      <span class="pull-left">
+                        <img
+                          src="http://localhost:8080/images/accueil.jpg"
+                          alt="accueil"
+                          class="img-responsive" 
+                          style="max-height: 85px; max-width: 175px;">
+                      </span>
+                      <div class="pull-left" style="margin: 10px; font-weight: bold; color: darkturquoise">
+                          <p *ngIf="user.nom; else pasdenom">{{user.nom}}</p>
+                          <ng-template #pasdenom>
+                            <p >{{user.email}}</p>
+                          </ng-template>
+                          <p>Inscrit: {{user.dateInscriptionString}}</p>
+                      </div>
+                      </a>
+                  </div>
+                </div>
+              </div>
+        </tab>
+        <tab heading="ADMINS"><br>
+            <div *ngFor="let user of users" >
+                <div *ngFor="let  auth of user.authorities" >
+                  <div *ngIf="auth.authority == 'ROLE_ADMIN'">
+                      <a
+                      style="cursor: pointer;"            
+                      class="list-group-item clearfix">
+                      <div class="pull-right" style="margin-left: 10px">
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                      </div>
+                      <div class="pull-right" style="text-align: right;  margin-right: 40px;">
+                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
+                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
+                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                        <form action="">
+
+                        </form>
+                      </div>
+                      <span class="pull-left">
+                        <img
+                          src="http://localhost:8080/images/accueil.jpg"
+                          alt="accueil"
+                          class="img-responsive" 
+                          style="max-height: 85px; max-width: 175px;">
+                      </span>
+                      <div class="pull-left" style="margin: 10px; font-weight: bold; color: darkturquoise">
+                          <p *ngIf="user.nom; else pasdenom">{{user.nom}}</p>
+                          <ng-template #pasdenom>
+                            <p >{{user.email}}</p>
+                          </ng-template>
+                          <p>Inscrit: {{user.dateInscriptionString}}</p>
+                      </div>
+                      </a>
+                  </div>
+                </div>
+              </div>
+        </tab>
+        <tab heading="SUPER ADMINS"><br>
+            <div *ngFor="let user of users" >
+                <div *ngFor="let  auth of user.authorities" >
+                  <div *ngIf="auth.authority == 'ROLE_SUPER_ADMIN'">
+                      <a
+                      style="cursor: pointer;"            
+                      class="list-group-item clearfix">
+                      <div class="pull-right" style="margin-left: 10px">
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                      </div>
+                      <div class="pull-right" style="text-align: right;  margin-right: 40px;">
+                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
+                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
+                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                        <form action="">
+
+                        </form>
+                      </div>
+                      <span class="pull-left">
+                        <img
+                          src="http://localhost:8080/images/accueil.jpg"
+                          alt="accueil"
+                          class="img-responsive" 
+                          style="max-height: 85px; max-width: 175px;">
+                      </span>
+                      <div class="pull-left" style="margin: 10px; font-weight: bold; color: darkturquoise">
+                          <p *ngIf="user.nom; else pasdenom">{{user.nom}}</p>
+                          <ng-template #pasdenom>
+                            <p >{{user.email}}</p>
+                          </ng-template>
+                          <p>Inscrit: {{user.dateInscriptionString}}</p>
+                      </div>
+                      </a>
+                  </div>
+                </div>
+              </div>
+        </tab>
+      </tabset>
+</div>
