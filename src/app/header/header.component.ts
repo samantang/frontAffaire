@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
 
   userLoged: UserModel;
   authorities: Authorities [];
+  userLog = localStorage.getItem('userLog');
+  usernameLog = localStorage.getItem('username');
+  authorityAdmin = localStorage.getItem('admin');
 
   constructor(private loginService: LoginServiceService , private router: Router) { }
 
@@ -24,16 +27,21 @@ export class HeaderComponent implements OnInit {
           (user: UserModel) => {
             this.userLoged = user;
             this.authorities = user.authorities;
+            for (let index = 0; index < user.authorities.length; index++) {
+              if (user.authorities[index].authority === 'ROLE_ADMIN') {
+                localStorage.setItem('admin', 'true');
+              }
+            }
           }
         );
+        // location.reload();
+        
   }
   getEvent (event: UserModel) {
   }
 
   logout() {
-    localStorage.setItem('userLoggedIn', '');
-    localStorage.setItem('username', '');
-    localStorage.setItem('token', '');
+    localStorage.clear();
 		this.loginService.logout().subscribe(
         res => {
         },

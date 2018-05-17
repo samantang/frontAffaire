@@ -74,7 +74,26 @@ export class LoginComponent implements OnInit {
                 this.loginService.getUserLogged(localStorage.getItem('token')).subscribe (
                   res => {
                     this.loginService.userConnected.emit(JSON.parse(JSON.parse(JSON.stringify(res))._body));
+                    localStorage.setItem('userLog', JSON.parse(JSON.parse(JSON.stringify(res))._body));
+                    // location.reload();
+
+                  
+                    // this.loginService.userConnected
+                    // .subscribe(
+                    //   (user: UserModel) => {
+                    //     // this.userLoged = user;
+                    //     // this.authorities = user.authorities;
+                    //     for (let index = 0; index < user.authorities.length; index++) {
+                    //       if (user.authorities[index].authority === 'ROLE_ADMIN') {
+                    //         localStorage.setItem('admin', 'true');
+                    //       }
+                    //     }
+                    //   }
+                    // );
+                    // location.reload();
+
                     this.router.navigate(['/annonces']);
+                    location.reload();
                   },
                   err => {
                     console.log(err);

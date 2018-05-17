@@ -13,12 +13,12 @@
             </a>
                 <ul class="dropdown-menu">
                   <li><a routerLink="/new-alerte">Créer Alerte</a></li>
-                  <li *ngIf="userLoged" ><a routerLink="/mes-alertes">Mes Alertes</a></li>
+                  <li *ngIf="usernameLog" ><a routerLink="/mes-alertes">Mes Alertes</a></li>
                 </ul>
         </li>
         <li><a routerLink="/mes-favoris">Mes Favoris</a></li>
         <li><a routerLink="/mes-annonces">Mes Annonces</a></li>
-        <li *ngIf="userLoged" ><a *ngFor="let auth of userLoged.authorities" >
+        <!-- <li *ngIf="userLoged" ><a *ngFor="let auth of userLoged.authorities" >
             <a routerLink="/annonces-a-valider" *ngIf="auth.authority === 'ROLE_ADMIN'" > A A Valider</a> 
           </a>
         </li>
@@ -29,13 +29,16 @@
         <li *ngIf="userLoged" ><a *ngFor="let auth of userLoged.authorities" >
           <a routerLink="/mes-activites" *ngIf="auth.authority === 'ROLE_ADMIN'" > Mes activités</a> 
       </a>
-      </li> 
+      </li>  -->
+        <li *ngIf="authorityAdmin == 'true'" ><a routerLink="/annonces-a-valider"><a>A Valider</a></a></li>
+        <li *ngIf="authorityAdmin == 'true'" ><a routerLink="/annonces-signalees"><a>A Signaler</a></a></li>
+        <li *ngIf="authorityAdmin == 'true'" ><a routerLink="/mes-activites"><a>Mes activités</a></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a class="btn btn-success" routerLink="/new">Deposer annonce</a></li>
-        <li *ngIf="!userLoged" ><a routerLink="/login">Connexion</a></li>
-        <li *ngIf="userLoged" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{userLoged.username}}
+        <li *ngIf="!userLog" ><a routerLink="/login">Connexion</a></li>
+        <li *ngIf="userLog" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{usernameLog}}
               <span class="caret"></span>
             </a>
                 <ul class="dropdown-menu">
