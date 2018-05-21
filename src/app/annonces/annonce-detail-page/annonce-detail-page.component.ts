@@ -33,5 +33,14 @@ export class AnnonceDetailPageComponent implements OnInit {
   onSignalerAnnonce() {
     this.router.navigate(['/signaler-annonce/' + this.id + '']);
   }
+  onUserDetails(id: number) {
+    this.router.navigate(['user-details/' + id + '']);
+  }
+  onSendMessage(id: number) {
+    this.router.navigate(['send-message/' + id + '']);
+  }
+  onSauvegarderAnnonce() {
+    this.annonceService.sauvegardeAnnonce(this.id);
+  }
 
 }

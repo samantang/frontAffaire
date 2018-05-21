@@ -63,6 +63,11 @@ export class AnnonceServiceService {
       let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
       return this.http.post(url, this.usernameLogged, {headers: headers});
     }
+    getUser(id: number) {
+      const url = 'http://localhost:8080/get-user/get-user/' + id + '';
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post(url, this.usernameLogged, {headers: headers});
+    }
 
   getAnnoncesApi() {
     const url = 'http://localhost:8080/get-annonces';
@@ -74,7 +79,12 @@ export class AnnonceServiceService {
   }
   getMesAnnonces () {
     const url = 'http://localhost:8080/get-user/mes-annonces';
-    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token')});
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.post(url, this.usernameLogged, {headers: headers});
+  }
+  getMesAnnoncesId (id: number) {
+    const url = 'http://localhost:8080/get-user/mes-annonces-id/' + id + '';
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
     return this.http.post(url, this.usernameLogged, {headers: headers});
   }
   // getMesAnnoncesValidees () {
@@ -422,6 +432,25 @@ export class AnnonceServiceService {
       let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
       return this.http.post('http://localhost:8080/get-user/set-moderateur/' + username + '', usernameLogged, {headers: headers});
     }
+    setAdmin(username: string){
+      const usernameLogged = localStorage.getItem('username');
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post('http://localhost:8080/get-user/set-admin/' + username + '', usernameLogged, {headers: headers});
+    }
+    setSuperAdmin(username: string){
+      const usernameLogged = localStorage.getItem('username');
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post('http://localhost:8080/get-user/set-super-admin/' + username + '', usernameLogged, {headers: headers});
+    }
+    suspendreCompte (id: number) {
+      const usernameLogged = localStorage.getItem('username');
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post('http://localhost:8080/get-user/suspendre-compte/' + id + '', usernameLogged, {headers: headers});
+    }
+    activerCompte (id: number) {
+      const usernameLogged = localStorage.getItem('username');
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post('http://localhost:8080/get-user/activer-compte/' + id + '', usernameLogged, {headers: headers});
 
+    }
   }
-

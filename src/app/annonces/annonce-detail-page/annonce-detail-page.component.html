@@ -53,7 +53,7 @@
           <p style=" font-weight: bold; font-size: x-large">Action</p><br>
           <div class="row">
               <div class="col-md-12">
-                <div class="col-md-4"><button class="btn btn-success"><span class="glyphicon glyphicon-heart" [routerLink]="['/annonce-details', 1]"></span><br>Suvegarder</button></div>
+                <div class="col-md-4"><button class="btn btn-success" (click)="onSauvegarderAnnonce()"><span class="glyphicon glyphicon-heart" [routerLink]="['/annonce-details', 1]"></span><br>Suvegarder</button></div>
                 <div class="col-md-4"><button class="btn btn-warning" (click)="onSignalerAnnonce()"><span class="glyphicon glyphicon-thumbs-down"></span><br>Signaler</button></div>
                 <div class="col-md-4"><button class="btn btn-info"><span class="glyphicon glyphicon-share"></span><br>Partager</button></div>
               </div>
@@ -67,10 +67,10 @@
             <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">{{annonce.titre}}</h2>
           </div>
           <div class="panel panel-body">
-            <p style="text-align: center; font-weight: bold; color: darkmagenta ">{{annonce.user_annoncesPostees.username}}</p>
+            <p style="text-align: center; font-weight: bold; color: darkmagenta " (click)="onUserDetails(annonce.user_annoncesPostees.userId)">{{annonce.user_annoncesPostees.username}}</p>
             <p style="text-align: center; font-weight: bold; color: darkmagenta ">{{annonce.user_annoncesPostees.phone}}</p>
             <div style="text-align: center">
-              <button class="btn btn-info btn-lg">Envoyer Message</button> 
+              <button class="btn btn-info btn-lg" (click)="onSendMessage(annonce.user_annoncesPostees.userId)">Envoyer Message</button> 
             </div>
           </div>
       </div>

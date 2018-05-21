@@ -1,4 +1,6 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -48,6 +50,7 @@ import { MesActivitesComponent } from './annonces/mes-activites/mes-activites.co
 import { MesActivitesItemComponent } from './annonces/mes-activites/mes-activites-item/mes-activites-item.component';
 import { AnnonceServiceService } from './annonces/annonce-service.service';
 import { UsersComponent } from './annonces/users/users.component';
+import { UserDetailsComponent } from './annonces/users/user-details/user-details.component';
 
 
 @NgModule({
@@ -84,11 +87,13 @@ import { UsersComponent } from './annonces/users/users.component';
     MesActivitesComponent,
     MesActivitesItemComponent,
     UsersComponent,
+    UserDetailsComponent,
 
   ],
   imports: [
     BrowserModule,
     // BrowserAnimationsModule,
+    // MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,

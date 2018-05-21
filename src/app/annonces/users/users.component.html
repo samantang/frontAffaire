@@ -3,8 +3,9 @@
       <button class="btn btn-info" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
     </p>
 </div>
+  <p>{{user.erreur}}{{user.success}}</p>
 <div *ngIf="usernameLogged">
-    <tabset>
+     <tabset>
         <tab heading="PARTICULIERS" id="tab1"><br>
               <div *ngFor="let user of users" >
                 <div *ngFor="let  auth of user.authorities" >
@@ -13,7 +14,7 @@
                       style="cursor: pointer;"            
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
-                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
                           <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
                       </div>
                       <div class="pull-right" style="text-align: right;  margin-right: 40px;">
@@ -89,7 +90,7 @@
                       style="cursor: pointer;"            
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
-                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
                           <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
                       </div>
                       <div class="pull-right" style="text-align: right;  margin-right: 40px;">
@@ -127,7 +128,7 @@
                       style="cursor: pointer;"            
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
-                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
                           <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
                       </div>
                       <div class="pull-right" style="text-align: right;  margin-right: 40px;">
@@ -165,7 +166,7 @@
                       style="cursor: pointer;"            
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
-                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
                           <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
                       </div>
                       <div class="pull-right" style="text-align: right;  margin-right: 40px;">

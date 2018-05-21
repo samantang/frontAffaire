@@ -5,7 +5,7 @@
 </div>
 <div *ngIf="usernameLogged">
   <tabset>
-    <tab heading="Mes offres Favories" id="tab1">
+    <tab heading="Mes offres Favories" id="tab1"><br>
       <div *ngFor="let favori of favoris" >
         <div *ngIf="favori.annonce.natureAnnonce === 'offre' " >
             <a
@@ -31,7 +31,7 @@
         </div>
       </div>
     </tab>
-    <tab heading="Mes demandes Favories">
+    <tab heading="Mes demandes Favories"><br>
       <div *ngFor="let favori of favoris" >
           <div *ngIf="favori.annonce.natureAnnonce === 'demande'  " >
               <a

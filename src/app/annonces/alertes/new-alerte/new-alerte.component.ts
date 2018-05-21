@@ -46,7 +46,11 @@ export class NewAlerteComponent implements OnInit {
     this.alerte = new AlerteModel(this.titre, this.particuliers, this.professionnels, this.offre,
        this.demande, this.categorie, this.region, this.ville);
     
-    this.alerteService.saveAlerte(this.alerte);
+    this.alerteService.saveAlerte(this.alerte)
+    .subscribe(
+      data => console.log(data),
+      error => console.log(error)
+    );
   }
   onConnect () {
     this.router.navigate(['/login']);

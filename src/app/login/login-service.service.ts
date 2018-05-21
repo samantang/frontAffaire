@@ -60,6 +60,17 @@ export class LoginServiceService {
     let getHeaders = new Headers({'Authorization':'Bearer '+token});
     return this.http.post(url, localStorage.getItem('currentUserName'), {headers: getHeaders});
   }
+  updatePassword(password: string) {
+    let url = 'http://localhost:8080/get-user/update-password/' + password + '' ;
+    // let getHeaders = new Headers({'Authorization':'Bearer ' + token});
+    console.log('lksldjklksj');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.post(url, localStorage.getItem('currentUserName'), {headers: headers})
+    .subscribe(
+      succes => console.log(succes),
+      error => console.log(error)
+    );
+  }
 
 
 }

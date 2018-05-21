@@ -1,7 +1,7 @@
 import { Authorities } from './authorities-mode';
 
 export class UserModel {
-    public id: number;
+    public userId: number;
     public username: string;
     public phone: number;
     public email: string;
@@ -18,13 +18,15 @@ export class UserModel {
     public erreur: string;
     public authorities: Authorities [];
     public dateInscriptionString: string;
+    public type_user: string;
+    public success: string;
 
-    constructor (id: number, username: string, email: string, phone: number, firstName: string,
+    constructor (userId: number, username: string, email: string, phone: number, firstName: string,
         lastName: string, ville: string, region: string, type: string, nomSociete: string, numeroSiretSocite: string,
         adresseSocite: string, sitewebSocite: string, password: string, erreur: string, authorities: Authorities [],
-        dateInscriptionString: string) {
+        dateInscriptionString: string, type_user: string, success: string) {
 
-        this.id = id;
+        this.userId = userId;
         this.username = username;
         this.phone = phone;
         this.email = email;
@@ -41,5 +43,7 @@ export class UserModel {
         this.erreur = erreur;
         this.authorities = authorities;
         this.dateInscriptionString = dateInscriptionString;
+        this.type_user = type_user;
+        this.success = success;
     }
 }

@@ -1,0 +1,15 @@
+<div>{{userResult.erreur}} {{userResult.success}}</div>
+<p>{{user.username}}</p>
+<div>
+  <div *ngIf="user.enabled">
+      <button   (click)="onDisableCompte()">suspendre le compte</button>
+  </div>
+  <div *ngIf="!user.enabled">
+      <button   (click)="onActivateCompte()">reactiver le compte</button>
+  </div>
+
+</div>
+
+<div *ngFor="let annonce of annonces" >
+  {{annonce.titre}}
+</div>

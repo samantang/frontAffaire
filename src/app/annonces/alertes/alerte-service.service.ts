@@ -10,17 +10,14 @@ export class AlerteServiceService {
   constructor(private http: Http, private httpClient: HttpClient) { }
 
   saveAlerte(alerte: AlerteModel) {
-    const url = 'http://localhost:8080/add-alerte';
-    return this.httpClient.post(url, alerte, {
-      reportProgress: true
-    }).subscribe(
-      success => console.log(success),
-      error => console.log(error)
-    );
+    const username = localStorage.getItem('username');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.post('http://localhost:8080/get-user/add-alertes/' + username + '' , alerte, {headers: headers});
   }
 
   getMesAlertes () {
-    const url = 'http://localhost:8080/mes-alertes';
-    return this.http.get(url);
+    const username = localStorage.getItem('username');
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.post('http://localhost:8080/get-user/mes-alertes' , username, {headers: headers});
   }
 }

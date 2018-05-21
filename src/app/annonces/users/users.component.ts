@@ -13,6 +13,7 @@ import { Authorities } from '../models/authorities-mode';
 export class UsersComponent implements OnInit {
   usernameLogged = localStorage.getItem('username');
   users:  UserModel [];
+  user: UserModel;
 
   userLoged: UserModel;
   authorities: Authorities [];
@@ -31,12 +32,26 @@ export class UsersComponent implements OnInit {
           }
         );
   }
-  onSetModerateur(email: any) {
-    console.log(email);
-    this.annonceService.setModerateur(email).subscribe(
-      data => console.log(data),
-      error => console.log(error)
+  onSetModerateur(username: any) {
+    this.annonceService.setModerateur(username).subscribe(
+      data => console.log(this.user = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
+      error => console.log(this.user = JSON.parse(JSON.parse(JSON.stringify(error))._body))
     );
+  }
+  onSetAdmin(email: any) {
+    this.annonceService.setAdmin(email).subscribe(
+      data => console.log(this.user = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
+      error => console.log(this.user = JSON.parse(JSON.parse(JSON.stringify(error))._body))
+    );
+  }
+  onSetSuperAdmin(email: any) {
+    this.annonceService.setSuperAdmin(email).subscribe(
+      data => console.log(this.user = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
+      error => console.log(this.user = JSON.parse(JSON.parse(JSON.stringify(error))._body))
+    );
+  }
+  consulterAnnonce(id: any) {
+    this.router.navigate(['/user-details/' + id + '']);
   }
 
 }
