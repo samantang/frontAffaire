@@ -18,6 +18,8 @@ export class AnnonceListeComponent implements OnInit, OnDestroy {
   @Input() tri: string;
 
   @Input() lesAnnoncesRecherche: Annonce [];
+
+  regionChoisi: string;
   annonces: Annonce [];
 
   Particulier: string = 'Particulier';
@@ -30,7 +32,6 @@ export class AnnonceListeComponent implements OnInit, OnDestroy {
   nbTotalAannonce: number;
 
   Particulierro: string = 'Particulier';
-  // message: any;
   subscription: Subscription;
 
   constructor(private annonceService: AnnonceServiceService) {
@@ -47,7 +48,9 @@ export class AnnonceListeComponent implements OnInit, OnDestroy {
       data => console.log( this.annonces = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
       error => console.log(error)
     );
-   
+    // this.annonceService.regionChoisi.subscribe(
+    //   region => this.regionChoisi = region
+    // );
   }
 
   pageChanged(event: any): void {

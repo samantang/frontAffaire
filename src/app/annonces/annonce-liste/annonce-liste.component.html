@@ -1,3 +1,4 @@
+<div *ngIf="regionChoisi" ><p>{{regionChoisi}}</p></div>
 <div *ngIf="lesAnnoncesRecherche; else pasDeRecherche" >
   <div class="col-xs-12">
       <app-annonce-item
@@ -6,7 +7,6 @@
         [index]="annonceEl.id"></app-annonce-item>  
     </div>
 </div>
-
 
 <!-- <ng-template #pasDeRecherche>
   <p>Alors pas de recherche</p>

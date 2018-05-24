@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Annonce } from '../../models/annonce.model';
+import { AnnonceServiceService } from '../../annonce-service.service';
 
 @Component({
   selector: 'app-annonce-item',
@@ -9,7 +10,7 @@ import { Annonce } from '../../models/annonce.model';
 export class AnnonceItemComponent implements OnInit {
   @Input() annonce: Annonce;
   @Input() index: number;
-  constructor() { }
+  constructor(private annonceService: AnnonceServiceService) { }
 
   ngOnInit() {
   }

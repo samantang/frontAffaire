@@ -51,6 +51,7 @@ import { MesActivitesItemComponent } from './annonces/mes-activites/mes-activite
 import { AnnonceServiceService } from './annonces/annonce-service.service';
 import { UsersComponent } from './annonces/users/users.component';
 import { UserDetailsComponent } from './annonces/users/user-details/user-details.component';
+import { ChoixRegionPipePipe } from './annonces/choix-region-pipe.pipe';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { UserDetailsComponent } from './annonces/users/user-details/user-details
     MesActivitesItemComponent,
     UsersComponent,
     UserDetailsComponent,
+    ChoixRegionPipePipe,
 
   ],
   imports: [

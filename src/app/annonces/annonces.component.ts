@@ -21,6 +21,7 @@ export class AnnoncesComponent implements OnInit, OnDestroy {
   typeChoisiProfessionnel = '';
   typeChoisiTous = '';
   infoRecherche: string;
+  // rechercheRegion: string;
 
   natureAnnonce = ['offre', 'demande'];
   natureChoisiOffre = '';

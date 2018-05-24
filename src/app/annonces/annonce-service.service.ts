@@ -33,6 +33,8 @@ export class AnnonceServiceService {
 
    userMessage: UserMessage;
 
+   
+
   constructor(private http: Http, private httpClient: HttpClient) { }
 
 
@@ -41,9 +43,17 @@ export class AnnonceServiceService {
   ];
   private annoncesSauvegardes: Annonce [] = [];
   usernameLogged = localStorage.getItem('username');
-
-  // 
   private subject = new Subject<any>();
+  // private subjectRegion = new BehaviorSubject('x');
+  // public regionChoisi = this.subjectRegion.asObservable();
+
+  // choixDeRegion(region: string) {
+  //   console.log('dans le service ' + region);
+  //   this.subjectRegion.next(region);
+  //   console.log('dans le service subjet: ' + this.subjectRegion.value);
+  // }
+
+  
 
     sendMessage(message: string) {
         this.subject.next({ text: message });
