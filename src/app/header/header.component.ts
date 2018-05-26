@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
 import { Authorities } from '../annonces/models/authorities-mode';
 
+declare var $: any;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -34,8 +36,26 @@ export class HeaderComponent implements OnInit {
             }
           }
         );
-        // location.reload();
-        
+
+        $(document).ready(function () {
+
+          $(window).on('scroll', function () {
+              if ($(window).scrollTop() >= 20) {
+                  $('.navbar').css({
+                      'padding-top': '7px',
+                      'padding-bottom': '7px'
+                  });
+                  $('.navbar').addClass('compressed');
+              } else {
+                  $('.navbar').css({
+                      'padding-top': '10px',
+                      'padding-bottom': '10px'
+                  });
+                  $('.navbar').removeClass('compressed');
+                  $('nav li a').removeClass('links_compressed');
+              }
+          });
+      });
   }
   getEvent (event: UserModel) {
   }

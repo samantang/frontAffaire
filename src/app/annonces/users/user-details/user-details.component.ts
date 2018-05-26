@@ -15,6 +15,10 @@ export class UserDetailsComponent implements OnInit {
   id: number;
   annonces: Annonce [];
   userResult: UserModel;
+  sesAnnoncesValidees: Annonce [];
+  sesAnnoncesSignalees: Annonce [];
+  sesAnnoncesInvalidees: Annonce [];
+  sesAnnoncesDepubliees: Annonce [];
 
   constructor(private annonceService: AnnonceServiceService,
     private route: ActivatedRoute,
@@ -49,6 +53,9 @@ export class UserDetailsComponent implements OnInit {
       data => console.log(this.userResult = JSON.parse(JSON.parse(JSON.stringify(data))._body) ),
       error => console.log(error)
     );
+  }
+  onConsulterAnnonce(id: number) {
+    this.router.navigate(['/annnonce-details-page/' + id + '']);
   }
 
 }

@@ -1,4 +1,4 @@
-<div>{{userResult.erreur}} {{userResult.success}}</div>
+<!-- <div>{{userResult.erreur}} {{userResult.success}}</div>
 <p>{{user.username}}</p>
 <div>
   <div *ngIf="user.enabled">
@@ -7,9 +7,140 @@
   <div *ngIf="!user.enabled">
       <button   (click)="onActivateCompte()">reactiver le compte</button>
   </div>
-
+</div> -->
+<div class="row">
+  <div class="col-sm-5">
+    <div><h2>Ses Annonces</h2></div>
+    <div *ngFor="let annonce of annonces" >
+      <a
+        style="cursor: pointer;"
+        routerLinkActive="active"
+        class="list-group-item clearfix">
+        <div class="pull-right" style="text-align: right ">
+          <button class="btn btn-info" (click)="onConsulterAnnonce(annonce.id)">Consulter Annonce</button><br>
+          <h4 class="list-group-item-heading">{{ annonce.titre }}</h4>
+          <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonce.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonce.ville }}</span></p><br>
+          <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonce.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+          <p class="list-group-item-text" style="color: darkblue;">{{ annonce.dateStringDepot }}</p>
+        </div>
+        <span class="pull-left">
+          <img
+            src="http://localhost:8080/images/{{annonce.cheminImage}}"
+            alt="{{ annonce.titre }}"
+            class="img-responsive" 
+            style="max-height: 85px; max-width: 175px;">
+        </span>
+        </a>
+    </div>
+  </div>
+  <div class="col-sm-7">
+    <div><h2>Ses Activités</h2></div>
+    <tabset>
+      <tab heading="Ses A Validees" id="tab1"><br>
+            <div *ngFor="let annonce of sesAnnoncesValidees" >
+              <!-- <div *ngFor="let  auth of user.authorities" >
+                <div *ngIf="auth.authority == 'ROLE_PARTICULIER'"> -->
+                  <a
+                  style="cursor: pointer;"
+                  routerLinkActive="active"
+                  class="list-group-item clearfix">
+                  <div class="pull-right" style="text-align: right ">
+                    <h4 class="list-group-item-heading">{{ annonce.titre }}</h4>
+                    <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonce.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonce.ville }}</span></p><br>
+                    <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonce.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+                    <p class="list-group-item-text" style="color: darkblue;">{{ annonce.dateStringDepot }}</p>
+                  </div>
+                  <span class="pull-left">
+                    <img
+                      src="http://localhost:8080/images/{{annonce.cheminImage}}"
+                      alt="{{ annonce.titre }}"
+                      class="img-responsive" 
+                      style="max-height: 85px; max-width: 175px;">
+                  </span>
+                  </a>
+                <!-- </div>
+              </div> -->
+            </div>
+      </tab>
+      <tab heading="Ses A Invalidées"><br>
+          <div *ngFor="let annonce of sesAnnoncesInvalidees" >
+              <!-- <div *ngFor="let  auth of user.authorities" >
+                <div *ngIf="auth.authority == 'ROLE_PROFESSIONEL'"> -->
+                  <a
+                  style="cursor: pointer;"
+                  routerLinkActive="active"
+                  class="list-group-item clearfix">
+                  <div class="pull-right" style="text-align: right ">
+                    <h4 class="list-group-item-heading">{{ annonce.titre }}</h4>
+                    <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonce.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonce.ville }}</span></p><br>
+                    <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonce.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+                    <p class="list-group-item-text" style="color: darkblue;">{{ annonce.dateStringDepot }}</p>
+                  </div>
+                  <span class="pull-left">
+                    <img
+                      src="http://localhost:8080/images/{{annonce.cheminImage}}"
+                      alt="{{ annonce.titre }}"
+                      class="img-responsive" 
+                      style="max-height: 85px; max-width: 175px;">
+                  </span>
+                  </a>
+                <!-- </div>
+              </div> -->
+            </div>
+      </tab>
+      <tab heading="Ses A Signalées"><br>
+          <div *ngFor="let annonce of sesAnnoncesSignalees" >
+              <!-- <div *ngFor="let  auth of user.authorities" >
+                <div *ngIf="auth.authority == 'ROLE_MODERATEUR'"> -->
+                  <a
+                  style="cursor: pointer;"
+                  routerLinkActive="active"
+                  class="list-group-item clearfix">
+                  <div class="pull-right" style="text-align: right ">
+                    <h4 class="list-group-item-heading">{{ annonce.titre }}</h4>
+                    <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonce.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonce.ville }}</span></p><br>
+                    <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonce.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+                    <p class="list-group-item-text" style="color: darkblue;">{{ annonce.dateStringDepot }}</p>
+                  </div>
+                  <span class="pull-left">
+                    <img
+                      src="http://localhost:8080/images/{{annonce.cheminImage}}"
+                      alt="{{ annonce.titre }}"
+                      class="img-responsive" 
+                      style="max-height: 85px; max-width: 175px;">
+                  </span>
+                  </a>
+                <!-- </div>
+              </div> -->
+            </div>
+      </tab>
+      <tab heading="Ses A Depubliées"><br>
+          <div *ngFor="let annonce of sesAnnoncesDepubliees" >
+              <!-- <div *ngFor="let  auth of user.authorities" >
+                <div *ngIf="auth.authority == 'ROLE_ADMIN'"> -->
+                  <a
+                  style="cursor: pointer;"
+                  routerLinkActive="active"
+                  class="list-group-item clearfix">
+                  <div class="pull-right" style="text-align: right ">
+                    <h4 class="list-group-item-heading">{{ annonce.titre }}</h4>
+                    <p class="list-group-item-text"> <span style="font-weight: bold">{{ annonce.region }}</span>&nbsp; > &nbsp; <span style="color: rgb(9, 211, 9); font-weight: bold ">{{ annonce.ville }}</span></p><br>
+                    <p class="list-group-item-text" style="font-weight: bold; color: rgb(214, 218, 16);">Prix: {{ annonce.prix }} &nbsp; <span style="color: blue">GNF</span> </p>
+                    <p class="list-group-item-text" style="color: darkblue;">{{ annonce.dateStringDepot }}</p>
+                  </div>
+                  <span class="pull-left">
+                    <img
+                      src="http://localhost:8080/images/{{annonce.cheminImage}}"
+                      alt="{{ annonce.titre }}"
+                      class="img-responsive" 
+                      style="max-height: 85px; max-width: 175px;">
+                  </span>
+                  </a>
+                <!-- </div>
+              </div> -->
+            </div>
+      </tab>
+    </tabset>
+  </div>
 </div>
 
-<div *ngFor="let annonce of annonces" >
-  {{annonce.titre}}
-</div>
