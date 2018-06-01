@@ -5,9 +5,9 @@
         </p>
   </div>
   <div *ngIf="usernameLogged">
-      <h3>Creation d'une alerte</h3>
-      <p>Pour faciliter vos recherches, vous pouvez créer des alertes et recevoir toutes les nouvelles annonces correspondant à vos critères.
-          Les alertes sont disponibles sur les catégories sont les grandes catégories.
+      <h3 style="font-weight: bold; color: dodgerblue">Creation d'une alerte</h3><br><hr>
+      <p style="font-style:italic; font-weight: bold; color: dimgrey"> Pour faciliter vos recherches, vous pouvez créer des alertes et recevoir toutes les nouvelles annonces correspondant à vos critères.
+          Les alertes sont disponibles seulement sur les grandes catégories.
       </p><br><br>
       <form (ngSubmit)="onSubmit()" #f="ngForm">
          <div class="row">
@@ -85,9 +85,22 @@
             </div>
           </div> 
           <div>
-            <button type="submit" class="btn btn-success" [disabled]="!f.valid">Valider</button>&nbsp;
+            <button type="submit" class="btn btn-success" (click)="openModal(template)" [disabled]="!f.valid">Valider</button>&nbsp;
             <button type="submit" class="btn btn-danger">Annuler</button>
           </div>
       </form>
   </div>
 </div>
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Création Alerte</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Votre demande a bien été pris en compte <br>
+      Cette Annonce est désormais dans la liste de vos annonces actives <br>
+      Vous recevrez alors des alertes pour les nouvelles annonces repondants à vos critères
+    </div>
+  </ng-template>

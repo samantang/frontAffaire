@@ -17,6 +17,7 @@ export class AValiderDetailsComponent implements OnInit {
   annonce: Annonce;
   id: number;
   modalRef: BsModalRef;
+  annonceAvalider: Annonce;
 
   constructor(private annonceService: AnnonceServiceService,
               private route: ActivatedRoute,
@@ -34,16 +35,16 @@ export class AValiderDetailsComponent implements OnInit {
       }
     );
   }
-  onValiderAnnonce(id: number) {
+  onValiderAnnonce() {
     this.annonceService.validerAnnonce(this.id).subscribe(
       data => console.log(JSON.parse(JSON.parse(JSON.stringify(data))._body)),
       error => console.log(error)
     );
-    this.router.navigate(['/annonces']);
+    this.router.navigate(['/annonces-a-valider']);
   }
-  validerModal (template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
+  // validerModal (template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template);
+  // }
   onEcrireMessage() {
     this.router.navigate(['/send-message/' + this.id + '']);
   }
@@ -52,7 +53,43 @@ export class AValiderDetailsComponent implements OnInit {
       data => console.log(JSON.parse(JSON.parse(JSON.stringify(data))._body)),
       error => console.log(error)
     );
-    this.router.navigate(['/annonces']);
+    this.router.navigate(['/annonces-a-valider']);
+  }
+  onModalValidationAnnonce(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+  onQuestionValiderAnnonce() {
+    this.annonceService.getAnnonceApi(this.id).subscribe(
+      data => console.log(this.annonceAvalider = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
+      error => console.log(error)
+    );
+  }
+  confirm(): void {
+    // this.pre = true;
+    this.modalRef.hide();
+    this.onValiderAnnonce();
+  }
+
+  decline(): void {
+    this.modalRef.hide();
+  }
+  onModalInValidationAnnonce(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+  onQuestionInValiderAnnonce() {
+    this.annonceService.getAnnonceApi(this.id).subscribe(
+      data => console.log(this.annonceAvalider = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
+      error => console.log(error)
+    );
+  }
+  confirminvalidation(): void {
+    // this.pre = true;
+    this.modalRef.hide();
+    this.onInvaliderAnnonce();
+  }
+
+  declineinvalidation(): void {
+    this.modalRef.hide();
   }
 
 }

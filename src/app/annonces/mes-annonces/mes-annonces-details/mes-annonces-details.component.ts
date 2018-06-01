@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { AnnonceServiceService } from '../../annonce-service.service';
 import { Annonce } from '../../models/annonce.model';
@@ -13,10 +15,12 @@ import { Annonce } from '../../models/annonce.model';
 export class MesAnnoncesDetailsComponent implements OnInit {
   annonce: Annonce;
   id: number;
+  modalRef: BsModalRef;
 
   constructor(private annonceService: AnnonceServiceService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private modalService: BsModalService) {
    }
 
    ngOnInit() {
@@ -58,11 +62,26 @@ export class MesAnnoncesDetailsComponent implements OnInit {
       error => console.log(error)
     );
   }
-  onSupprimerAnnonce(){
+  onSupprimerAnnonce() {
     this.annonceService.suppirmerAnnonce(this.id).subscribe(
       data => console.log(this.annonce = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
       error => console.log(error)
     );
   }
 
+  // onQuestionSupprimerAnnonce() {
+
+  // }
+  openModalSuppression(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+  confirm(): void {
+    // this.pre = true;
+    this.modalRef.hide();
+    this.onSupprimerAnnonce();
+  }
+
+  decline(): void {
+    this.modalRef.hide();
+  }
 }

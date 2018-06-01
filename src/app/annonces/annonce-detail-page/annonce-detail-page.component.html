@@ -34,6 +34,10 @@
                 </carousel>     
       </div><hr>
       <div class="panel-footer">
+          <h3 style=" font-weight: bold; font-size: x-large; float: left" class="panel-title">Date Publication</h3>
+          <h3 style=" font-weight: bold; font-size: x-large; float: right; color: rgb(247, 182, 30)" class="panel-title">{{annonce.dateStringValidation}}</h3>
+        </div><hr>
+      <div class="panel-footer">
         <h3 style=" font-weight: bold; font-size: x-large; float: left" class="panel-title">PRIX</h3>
         <h3 style=" font-weight: bold; font-size: x-large; float: right; color: rgb(247, 182, 30)" class="panel-title">{{annonce.prix}} &nbsp; GNF</h3>
       </div><hr>
@@ -46,19 +50,24 @@
           <h3 style=" font-weight: bold; font-size: x-large; float: right; color: rgb(22, 133, 236)" class="panel-title">{{annonce.ville}}</h3>
         </div><hr>
       <div class="panel-footer">
-        <p style=" font-weight: bold; font-size: x-large">Description</p><br>
-        <p>{{annonce.description}}</p>
+        <p style=" font-weight: bold; font-size: x-large; color: goldenrod">Description</p><br>
+        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger; background-color: floralwhite">{{annonce.description}}</p>
       </div>
       <div class="panel-footer">
-          <p style=" font-weight: bold; font-size: x-large">Action</p><br>
+          <p style=" font-weight: bold; font-size: x-large; color: goldenrod">Action</p><br>
           <div class="row">
               <div class="col-md-12">
-                <div class="col-md-4"><button class="btn btn-success" (click)="onSauvegarderAnnonce()"><span class="glyphicon glyphicon-heart" [routerLink]="['/annonce-details', 1]"></span><br>Suvegarder</button></div>
+                <div class="col-md-4"><button class="btn btn-success" (click)="openModalSauvegarde(template)"><span class="glyphicon glyphicon-heart" [routerLink]="['/annonce-details', 1]"></span><br>Suvegarder</button></div>
                 <div class="col-md-4"><button class="btn btn-warning" (click)="onSignalerAnnonce()"><span class="glyphicon glyphicon-thumbs-down"></span><br>Signaler</button></div>
                 <div class="col-md-4"><button class="btn btn-info"><span class="glyphicon glyphicon-share"></span><br>Partager</button></div>
               </div>
             </div><br>
         </div>
+        <div *ngIf="pre" >
+            <pre>
+                <div style="color: forestgreen; font-weight: bold; font-size: larger">{{messageConfirmation}}</div>
+            </pre>
+          </div>
      </div>
   </div>
   <div class="col-md-4">
@@ -67,7 +76,7 @@
             <h2 style="text-align: center; font-weight: bold; font-size: x-large" class="panel-title">{{annonce.titre}}</h2>
           </div>
           <div class="panel panel-body">
-            <p style="text-align: center; font-weight: bold; color: darkmagenta " (click)="onUserDetails(annonce.user_annoncesPostees.userId)">{{annonce.user_annoncesPostees.username}}</p>
+            <p style="text-align: center; font-weight: bold; color: rgb(0, 95, 139) " (click)="onUserDetails(annonce.user_annoncesPostees.userId)">{{annonce.user_annoncesPostees.username}}</p>
             <p style="text-align: center; font-weight: bold; color: darkmagenta ">{{annonce.user_annoncesPostees.phone}}</p>
             <div style="text-align: center">
               <button class="btn btn-info btn-lg" (click)="onSendMessage(annonce.user_annoncesPostees.userId)">Envoyer Message</button> 
@@ -103,3 +112,10 @@
       </div>
   </div>
  </div>
+ <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Voulez-vous Ajouter cette annonce dans la liste de vos favoris ?</p>
+      <button type="button" class="btn btn-success" (click)="confirm()" >Oui Ajouter</button>
+      <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+    </div>
+  </ng-template>

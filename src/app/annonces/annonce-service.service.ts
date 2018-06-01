@@ -97,6 +97,11 @@ export class AnnonceServiceService {
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
     return this.http.post(url, this.usernameLogged, {headers: headers});
   }
+  addNombreVuesAnnonce(id: number) {
+    const url = 'http://localhost:8080/get-user/add-nb-vues-annonce/' + id + '';
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.get(url, {headers: headers});
+  }
   // getMesAnnoncesValidees () {
   //   const url = 'http://localhost:8080/get-user/mes-annonces-validees';
   //   let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem('token')});
@@ -462,5 +467,21 @@ export class AnnonceServiceService {
       let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
       return this.http.post('http://localhost:8080/get-user/activer-compte/' + id + '', usernameLogged, {headers: headers});
 
+    }
+    retirerRoleParticulier(id: number) {
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.get('http://localhost:8080/get-user/retirer-role-particulier/' + id + '', {headers: headers});
+    }
+    retirerRoleModerateur(id: number) {
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.get('http://localhost:8080/get-user/retirer-role-moderateur/' + id + '', {headers: headers});
+    }
+    retirerRoleAdmin(id: number) {
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.get('http://localhost:8080/get-user/retirer-role-admin/' + id + '', {headers: headers});
+    }
+    retirerRoleSuperAdmin(id: number) {
+      let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+      return this.http.get('http://localhost:8080/get-user/retirer-role-super-admin/' + id + '', {headers: headers});
     }
   }

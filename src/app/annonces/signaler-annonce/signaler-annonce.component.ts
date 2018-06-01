@@ -39,11 +39,9 @@ export class SignalerAnnonceComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.motifSignalement = this.singupForm.value.motifsignalement;
     this.messageSignalement = this.singupForm.value.messagesignalement;
-    console.log('signalement message: ' + this.singupForm.value.messagesignalement);
-    console.log('signalement motif: ' + this.singupForm.value.motifsignalement);
-
     this.annonceSignalee = new AnnonceSignalee(this.id, this.motifSignalement, this.messageSignalement);
     this.annonceService.signalerAnnonce(this.annonceSignalee);
+    this.router.navigate(['/annonces']);
   }
   onAnnuler() {
     this.router.navigate(['/annonces']);

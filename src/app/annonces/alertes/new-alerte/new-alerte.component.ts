@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { AlerteModel } from '../../models/alerte-model';
 import { AlerteServiceService } from '../alerte-service.service';
@@ -13,6 +16,7 @@ import { AlerteServiceService } from '../alerte-service.service';
 })
 export class NewAlerteComponent implements OnInit {
   @ViewChild('f') singupForm: NgForm;
+  modalRef: BsModalRef;
   usernameLogged = localStorage.getItem('username');
 
   typeAlerte = ['offre', 'demande'];
@@ -28,7 +32,9 @@ export class NewAlerteComponent implements OnInit {
 
   alerte: AlerteModel;
 
-  constructor(private alerteService: AlerteServiceService, private router: Router) { }
+  constructor(private alerteService: AlerteServiceService,
+              private router: Router,
+              private modalService: BsModalService) { }
 
   ngOnInit() {
   }
@@ -42,17 +48,20 @@ export class NewAlerteComponent implements OnInit {
     this.categorie = this.singupForm.value.categorie;
     this.region = this.singupForm.value.region;
     this.ville = this.singupForm.value.ville;
-    
     this.alerte = new AlerteModel(this.titre, this.particuliers, this.professionnels, this.offre,
-       this.demande, this.categorie, this.region, this.ville);
-    
+       this.demande, this.categorie, this.region, this.ville, null);
+
     this.alerteService.saveAlerte(this.alerte)
     .subscribe(
       data => console.log(data),
       error => console.log(error)
     );
+    this.singupForm.reset();
   }
   onConnect () {
     this.router.navigate(['/login']);
+  }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }

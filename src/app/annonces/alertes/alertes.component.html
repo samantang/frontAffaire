@@ -1,20 +1,31 @@
  <div *ngIf="alertes" >
-    <h3>Vos alertes actives</h3>
+    <h3 style="font-weight: bold; color: dodgerblue">Vos alertes actives</h3><br><hr>
     <div class="well" *ngFor="let alerte of alertes" >
       <div class="row">
         <div class="col-md-3">
-            {{alerte.titre}}
-        </div>
-        <div class="col-md-6">
-          <span style="font-weight: bold; font-style: italic">Description:</span>
-          {{alerte.region}}
-          {{alerte.ville}}
-          {{alerte.categorie}}
+          <span style="font-weight: bold; font-style: italic">Titre</span><br>
+          {{alerte.titre}}
         </div>
         <div class="col-md-3">
-          <a href="">Modifier</a><br>
-          <a href="">supprimer</a>
+          <span style="font-weight: bold; font-style: italic">Localisation</span><br>
+          <span style="color: darkturquoise">{{alerte.region}}</span>&nbsp; <span style="color: firebrick">>></span>
+          <span style="color: green">{{alerte.ville}}</span>
+        </div>
+        <div class="col-md-3">
+            <span style="font-weight: bold; font-style: italic">Catégorie</span><br>
+            {{alerte.categorie}}
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-danger" (click)="onQuestionSupprimerAlerte(alerte.id)" (click)="openModalSuppression(template)">Supprimer</button>
         </div>
       </div>
     </div>
  </div>
+ <ng-template #template>
+    <div class="modal-body text-center">
+      <p style="font-weight: bold">Voulez-vous Vraiment supprimer cette annonce ?</p><hr>
+      <p style="font-style: italic">Vous ne recevrez alors plus de notifications pour la publication des annonces qui repondent à ces critères</p><hr>
+      <button type="button" class="btn btn-success" (click)="confirm()" >Oui Supprimer</button>
+      <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+    </div>
+  </ng-template>

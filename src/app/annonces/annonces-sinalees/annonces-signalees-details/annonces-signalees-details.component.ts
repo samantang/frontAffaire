@@ -51,7 +51,7 @@ export class AnnoncesSignaleesDetailsComponent implements OnInit {
     this.router.navigate(['/annonces-signalees/' + this.id + '']);
   }
   onEcrireMessage() {
-    this.router.navigate(['/annonces-signalees/' + this.id + '']);
+    this.router.navigate(['/send-message/' + this.id + '']);
   }
 
   openModal(template: TemplateRef<any>) {

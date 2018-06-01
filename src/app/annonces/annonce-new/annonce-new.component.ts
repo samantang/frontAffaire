@@ -108,7 +108,7 @@ export class AnnonceNewComponent implements OnInit {
     this.annonce = new Annonce(this.id, this.titre, this.description, this.region, this.ville, this.cheminImage, this.categorie, '', '',
                     this.typeAnnonceModel, this.natureAnnonceModel, this.prix, this.phone, this.telephoneVisible, this.nbDeVues,
                      this.surfaceMetreCarre, this.nbPieces, this.modele, this.anneeModele, this.carburant, this.boiteDeVitesse,
-                     this.cylindre, this.longueur, this.largeur, this.nomPhoto, false, '', '', '', '', false, '') ;
+                     this.cylindre, this.longueur, this.largeur, this.nomPhoto, false, '', '', '', '', false, '', 0) ;
 
                     //  on appelle les methodes de chargement des photos dans la BDD que si la photo est selectionnée
                     if (this.photo1 !== '') {

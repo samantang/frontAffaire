@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators, NgForm} from '@angular/forms';
 
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { AnnonceServiceService } from '../../annonce-service.service';
 import { Annonce } from '../../models/annonce.model';
@@ -16,6 +18,7 @@ import { Annonce } from '../../models/annonce.model';
 export class MesAnnoncesEditComponent implements OnInit {
   @ViewChild('f') singupForm: NgForm;
 
+  modalRef: BsModalRef;
   annonce: Annonce;
   // id: number;
   categorieChoisie = '';
@@ -64,7 +67,8 @@ export class MesAnnoncesEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private annonceService: AnnonceServiceService,
-              private router: Router) {
+              private router: Router,
+              private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -112,7 +116,7 @@ export class MesAnnoncesEditComponent implements OnInit {
     this.annonce = new Annonce(this.id, this.titre, this.description, this.region, this.ville, this.cheminImage, this.categorie, '', '',
                     this.typeAnnonce, this.natureAnnonce, this.prix, this.telephone, this.telephoneVisible, this.nbDeVues,
                     this.surfaceMetreCarre, this.nbPieces, this.modele, this.anneeModele, this.carburant, this.boiteDeVitesse,
-                    this.cylindre, this.longueur, this.largeur, this.nomPhoto, false, '', '', '', '', false, '') ;
+                    this.cylindre, this.longueur, this.largeur, this.nomPhoto, false, '', '', '', '', false, '', 0) ;
 
                       //  on appelle les methodes de chargement des photos dans la BDD que si la photo est selectionnée
                     if (this.photo1 !== '') {
@@ -143,6 +147,7 @@ export class MesAnnoncesEditComponent implements OnInit {
                      this.photo2 = '';
                      this.photo3 = '';
                      this.photo4 = '';
+                     this.router.navigate(['/mes-annonces']);
                     //  this.singupForm.reset();
 
                     //  this.annonceService.updatePhotosAnnonce();
@@ -195,4 +200,11 @@ export class MesAnnoncesEditComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+  onCancel() {
+    this.router.navigate(['/mes-annonces/' + this.annonce.id]);
+  }
 }
+

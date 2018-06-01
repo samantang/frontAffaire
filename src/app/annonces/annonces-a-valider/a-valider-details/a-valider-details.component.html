@@ -1,16 +1,39 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="col-md-4"><span style="font-weight: bold">Prix:</span> {{annonce.prix}}</div>
-    <div class="col-md-4"><span style="font-weight: bold">Ville:</span> {{annonce.ville}}</div>
-    <div class="col-md-4"><span style="font-weight: bold">Phone:</span> {{annonce.telephone}}</div>
+    <div class="well">
+      <!-- <div class="col-md-4"><span style="font-weight: bold">Prix:</span> {{annonce.prix}}</div>
+      <div class="col-md-4"><span style="font-weight: bold">Ville:</span> {{annonce.ville}}</div>
+      <div class="col-md-4"><span style="font-weight: bold">Phone:</span> {{annonce.telephone}}</div> -->
+
+      <div class="col-md-4"><span style="font-weight: bold">Prix:</span> <span style="color: darkturquoise">{{annonce.prix}}</span> &nbsp; GNF</div>
+      <div class="col-md-4"><span style="font-weight: bold">Date:</span> <span style="color: darkturquoise">{{annonce.dateStringDepot}}</span></div>
+      <div class="col-md-4"><span style="font-weight: bold">Annonceur:</span> <span style="color: darkturquoise; font-weight: bold">{{annonce.user_annoncesPostees.username}}</span></div><br>
+    </div>
   </div>
-</div><br>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+          <div class="col-md-3"><span style="font-weight: bold">Region:</span> <span style="color: darkturquoise">{{annonce.region}}</span></div>
+          <div class="col-md-3"><span style="font-weight: bold">Ville:</span> <span style="color: rgb(25, 231, 111); font-weight: bold">{{annonce.ville}}</span></div>
+          <div class="col-md-3">
+            <div *ngIf="annonce.telephoneVisible; else noPhone"  class="col-md-4"><span style="font-weight: bold">Phone:</span> {{annonce.user_annoncesPostees.phone}}</div>
+            <ng-template #noPhone>
+              <!-- <div  class="col-md-4"><span style="font-weight: bold">Email:</span> {{annonce.user_annoncesPostees.email}}</div> -->
+              <div class="col-md-4"> <button class="btn btn-danger" ><span style="font-weight: bold">phone</span>&nbsp;<span class="glyphicon glyphicon-ban-circle"></span></button></div>
+            </ng-template>
+          </div><br>
+      </div>
+    </div>
+  </div>
+
+<br>
 <div class="row">
   <div class="col-xs-12">
     <img
       src="http://localhost:8080/images/{{annonce.cheminImage}}"
-      alt="{{ annonce.nom }}"
+      alt="{{ annonce.titre }}"
       class="img-responsive"
       style="max-height: 300px;">
   </div>
@@ -32,12 +55,12 @@
 <div class="row">
   <div class="col-md-12">
     <!-- <div class="col-md-3"><button class="btn btn-primary" (click)="onAnnonceDetails()">Plus de details <br> sur l'annonce</button></div> -->
-    <div class="col-md-4"><button class="btn btn-success" (click)="onValiderAnnonce()" (click)="validerModal(template)"><span class="glyphicon glyphicon-thumbs-up" ></span><br>Valider et publier l'annonce</button></div>
-    <div class="col-md-4"><button class="btn btn-danger" (click)="onInvaliderAnnonce()"><span class="glyphicon glyphicon-thumbs-down"></span><br>Invalider l'annonce</button></div>
+    <div class="col-md-4"><button class="btn btn-success" (click)="onQuestionValiderAnnonce()" (click)="onModalValidationAnnonce(template)"><span class="glyphicon glyphicon-thumbs-up" ></span><br>Valider et publier l'annonce</button></div>
+    <div class="col-md-4"><button class="btn btn-danger" (click)="onQuestionInValiderAnnonce()" (click)="onModalInValidationAnnonce(templateivalidation)"><span class="glyphicon glyphicon-thumbs-down"></span><br>Invalider l'annonce</button></div>
     <div class="col-md-4"><button class="btn btn-warning" (click)="onEcrireMessage()"><span class="glyphicon glyphicon-envelope"></span><br>Ecrire un message à l'annonceur</button></div>
   </div>
 </div><br> 
-<ng-template #template>
+<!-- <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Validation Annonce</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -47,5 +70,21 @@
   <div class="modal-body">
     Vous avez bien valider l'annonce <br>
     elle est désormais publiée et est visible comme annonce validée dans vos activités <br>
+  </div>
+</ng-template> -->
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p style="font-weight: bold">Voulez-vous Vraiment valider cette annonce ?</p><hr>
+    <p style="font-style: italic">Cette Annonce sera alors publiée sur le site et apparaitra dans liste des annonces que vous avez validé</p><hr>
+    <button type="button" class="btn btn-success" (click)="confirm()" >Oui Valider</button>
+    <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+  </div>
+</ng-template>
+<ng-template #templateivalidation>
+  <div class="modal-body text-center">
+    <p style="font-weight: bold; color: darkred">Voulez-vous Vraiment invalider cette annonce ?</p><hr>
+    <p style="font-style: italic; color: firebrick">Cette Annonce ne sera alors pas publiée sur le site et apparaitra dans liste des annonces que vous avez invalidé</p><hr>
+    <button type="button" class="btn btn-success" (click)="confirminvalidation()" >Oui Invalider</button>
+    <button type="button" class="btn btn-danger" (click)="declineinvalidation()" >Non Annuler</button>
   </div>
 </ng-template>

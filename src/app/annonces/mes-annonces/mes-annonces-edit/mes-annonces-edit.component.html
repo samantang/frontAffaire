@@ -380,6 +380,7 @@
         <div class="row">
             <div class="col-md-12">
               <button
+                (click)="openModal(template)"
                 type="submit"
                 class="btn btn-success"
                 [disabled]="!f.valid">Valider</button>
@@ -388,4 +389,17 @@
           </div>
       </form>  
     </div>
-</div>     
+</div>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modification d'Annonce</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="font-weight: bold;">Votre demande a bien été pris en compte</p> 
+    <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">cette annonce est rendu inivisible pour l'instant
+      Elle sera <span style="color: darkturquoise;">republiée après validation</span> par les administrateurs du site</p> 
+  </div>
+</ng-template>    

@@ -3,7 +3,7 @@
       <button class="btn btn-info" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
     </p>
 </div>
-  <p>{{user.erreur}}{{user.success}}</p>
+  <p style="text-align: center; font-weight: bold; font-size: large; color: darkorange">{{user.erreur}}{{user.success}}</p>
 <div *ngIf="usernameLogged">
      <tabset>
         <tab heading="PARTICULIERS" id="tab1"><br>
@@ -15,12 +15,13 @@
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
                           <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
-                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                          <!-- <button class="btn btn-danger" style="margin: 5px;" (click)="retirerRoleParticulier(user.userId)">lui retirer ce rôle</button> -->
                       </div>
                       <div class="pull-right" style="text-align: right;  margin-right: 40px;">
-                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
-                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
-                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                        <p style="font-size: large; color: darkturquoise; margin-right: 30px;">Donnez lui un rôle</p>
+                        <button class="btn" (click)="onOpenModalModerateur(templatemoderateur)" (click)="onGetUser(user.userId)">moderateur</button>
+                        <button class="btn btn-info" (click)="onOpenModalAdmin(templateadmin)" (click)="onGetUser(user.userId)">admin</button>
+                        <button class="btn btn-success" (click)="onOpenModalSuperAdmin(templatesuperadmin)" (click)="onGetUser(user.userId)">super admin</button>
                         <form action="">
 
                         </form>
@@ -52,13 +53,14 @@
                       style="cursor: pointer;"            
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
-                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">Voir son profil</button><br>
-                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                          <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="retirerRoleParticulier(user.userId)">lui retirer ce rôle</button>
                       </div>
                       <div class="pull-right" style="text-align: right;  margin-right: 40px;">
-                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
-                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
-                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                          <p style="font-size: large; color: darkturquoise; margin-right: 30px;">Donnez lui un rôle</p>
+                          <button class="btn" (click)="onOpenModalModerateur(templatemoderateur)" (click)="onGetUser(user.userId)">moderateur</button>
+                          <button class="btn btn-info" (click)="onOpenModalAdmin(templateadmin)" (click)="onGetUser(user.userId)">admin</button>
+                          <button class="btn btn-success" (click)="onOpenModalSuperAdmin(templatesuperadmin)" (click)="onGetUser(user.userId)">super admin</button>
                         <form action="">
 
                         </form>
@@ -91,12 +93,12 @@
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
                           <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
-                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="onOpenModalRetirerRoleModerateur(templateRoleModerateur)" (click)="onGetUser(user.userId)">lui retirer ce rôle</button>
                       </div>
                       <div class="pull-right" style="text-align: right;  margin-right: 40px;">
-                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
-                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
-                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                          <p style="font-size: large; color: darkturquoise; margin-right: 30px;">Donnez lui un rôle</p>
+                          <button class="btn btn-info" (click)="onOpenModalAdmin(templateadmin)" (click)="onGetUser(user.userId)">admin</button>
+                          <button class="btn btn-success" (click)="onOpenModalSuperAdmin(templatesuperadmin)" (click)="onGetUser(user.userId)">super admin</button>
                         <form action="">
 
                         </form>
@@ -129,12 +131,11 @@
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
                           <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
-                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="onOpenModalRetirerRoleAdmin(templateRoleAdmin)" (click)="onGetUser(user.userId)">lui retirer ce rôle</button>
                       </div>
                       <div class="pull-right" style="text-align: right;  margin-right: 40px;">
-                        <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
-                        <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
-                        <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
+                          <p style="font-size: large; color: darkturquoise; margin-right: 30px;">Donnez lui un rôle</p>
+                          <button class="btn btn-success" (click)="onOpenModalSuperAdmin(templatesuperadmin)" (click)="onGetUser(user.userId)">super admin</button>
                         <form action="">
 
                         </form>
@@ -167,16 +168,16 @@
                       class="list-group-item clearfix">
                       <div class="pull-right" style="margin-left: 10px">
                           <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(user.userId)">Voir son profil</button><br>
-                          <button class="btn btn-danger" style="margin: 5px;" (click)="deleteFavori(favori.id)">suspendre compte</button>
+                          <button class="btn btn-danger" style="margin: 5px;" (click)="onOpenModalRetirerRoleSuperAdmin(templateRoleSuperAdmin)" (click)="onGetUser(user.userId)">lui retirer ce rôle</button>
                       </div>
-                      <div class="pull-right" style="text-align: right;  margin-right: 40px;">
+                      <!-- <div class="pull-right" style="text-align: right;  margin-right: 40px;">
                         <button class="btn" (click)="onSetModerateur(user.username)">moderateur</button>
                         <button class="btn btn-info" (click)="onSetAdmin(user.username)">admin</button>
                         <button class="btn btn-success" (click)="onSetSuperAdmin(user.username)">super admin</button>
                         <form action="">
 
                         </form>
-                      </div>
+                      </div> -->
                       <span class="pull-left">
                         <img
                           src="http://localhost:8080/images/accueil.jpg"
@@ -198,3 +199,52 @@
         </tab>
       </tabset>
 </div>
+<ng-template #templatemoderateur>
+    <div class="modal-body text-center">
+        <p style="font-weight: bold">Voulez-vous Vraiment lui donner ces droits MODERATEUR ?</p><hr>
+        <p style="font-style: italic">Il aura alors tous les droits des autres modérateurs du site</p><hr>
+        <button type="button" class="btn btn-success" (click)="confirmModerateur()" >Oui lui donner</button>
+        <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+      </div>
+  </ng-template>
+  <ng-template #templateadmin>
+      <div class="modal-body text-center">
+          <p style="font-weight: bold">Voulez-vous Vraiment lui donner ces droits ADMIN ?</p><hr>
+          <p style="font-style: italic">Il aura alors tous les droits des autres Admins du site</p><hr>
+          <button type="button" class="btn btn-success" (click)="confirmAdmin()" >Oui lui donner</button>
+          <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+        </div>
+    </ng-template>
+    <ng-template #templatesuperadmin>
+        <div class="modal-body text-center">
+            <p style="font-weight: bold">Voulez-vous Vraiment lui donner ces droits SUPERADMIN ?</p><hr>
+            <p style="font-style: italic">Il aura alors tous les droits des autres Super-Admins du site</p><hr>
+            <button type="button" class="btn btn-success" (click)="confirmSuperAdmin()" >Oui lui donner</button>
+            <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+          </div>
+      </ng-template>
+      <ng-template #templateRoleModerateur>
+          <div class="modal-body text-center">
+              <p style="font-weight: bold">Voulez-vous Vraiment lui retirer le Role Moderateur ?</p><hr>
+              <p style="font-style: italic">Il n'aura alors plus accès aux fontionalités réservées à ce role</p><hr>
+              <button type="button" class="btn btn-success" (click)="confirmRetirerRoleModerateur()" >Oui lui retirer</button>
+              <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+            </div>
+        </ng-template>
+        <ng-template #templateRoleAdmin>
+            <div class="modal-body text-center">
+                <p style="font-weight: bold">Voulez-vous Vraiment lui retirer le Role Admin ?</p><hr>
+                <p style="font-style: italic">Il n'aura alors plus accès aux fontionalités réservées à ce role</p><hr>
+                <button type="button" class="btn btn-success" (click)="confirmRetirerRoleAdmin()" >Oui lui retirer</button>
+                <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+              </div>
+          </ng-template>
+          <ng-template #templateRoleSuperAdmin>
+              <div class="modal-body text-center">
+                  <p style="font-weight: bold">Voulez-vous Vraiment lui retirer le Role SuperAdmin ?</p><hr>
+                  <p style="font-style: italic">Il n'aura alors plus accès aux fontionalités réservées à ce role</p><hr>
+                  <button type="button" class="btn btn-success" (click)="confirmRetirerRoleSuperAmin()" >Oui lui retirer</button>
+                  <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+                </div>
+            </ng-template>
+

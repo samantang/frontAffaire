@@ -3,13 +3,15 @@
       <button class="btn btn-info" (click)="onConnect()">Merci de vous connecter ou de vous inscrire d'abord</button>
     </p>
 </div>
+<div>
+  <h3 style="font-weight: bold; color: dodgerblue">Vos Favoris</h3><br>
+</div>
 <div *ngIf="usernameLogged">
   <tabset>
     <tab heading="Mes offres Favories" id="tab1"><br>
       <div *ngFor="let favori of favoris" >
         <div *ngIf="favori.annonce.natureAnnonce === 'offre' " >
-            <a
-            style="cursor: pointer;"            
+            <a           
             class="list-group-item clearfix">
             <div class="pull-right" style="margin-left: 10px">
                 <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">consulter annonce</button><br>
@@ -35,7 +37,6 @@
       <div *ngFor="let favori of favoris" >
           <div *ngIf="favori.annonce.natureAnnonce === 'demande'  " >
               <a
-              style="cursor: pointer;"            
               class="list-group-item clearfix">
               <div class="pull-right" style="margin-left: 10px">
                   <button class="btn btn-success" style="margin: 5px;" (click)="consulterAnnonce(favori.annonce.id)">consulter annonce</button><br>

@@ -1,5 +1,5 @@
 <!-- <p><h5>Les annonces à Valider</h5></p> -->
-<p style="text-align: center">Les annonces à Signalées</p><br>
+<p style="text-align: center; font-weight: bold; color: dodgerblue; font-size: large">Les annonces à Signalées</p><br>
 <div class="col-md-5">
   <div *ngFor="let annonce of annonces; let i = index" >
     <a
@@ -14,7 +14,7 @@
       <span class="pull-left">
         <img
           src="http://localhost:8080/images/{{annonce.cheminImage}}"
-          alt="{{ annonce.nom }}"
+          alt="{{ annonce.titre }}"
           class="img-responsive" 
           style="max-height: 85px;">
       </span>

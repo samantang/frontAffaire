@@ -41,6 +41,7 @@ export class Annonce {
   public publie: boolean;
 
   public etatPublication: string;
+  public nombreDeVues: number;
 
   public dateStringDepot: string;
   public dateStringValidation: string;
@@ -57,7 +58,7 @@ export class Annonce {
        telephone: number, telephoneVisible: boolean, nbVues: number, surfaceMetreCarre: number, nbPieces: number,
        modele: string, anneModele: number, carburant: string, boiteDeVitesse: string, cylindre: number, longueur: number,
         largeur: number, nomPhoto: string, annonceSignalee: boolean, motifSignalement: string, messageSignalement: string,
-        dateStringDepot: string, dateStringValidation: string, publie: boolean, etatPublication: string) {
+        dateStringDepot: string, dateStringValidation: string, publie: boolean, etatPublication: string, nombreDeVues: number) {
     this.id = id;
     this.titre = titre;
     this.description = description;
@@ -87,5 +88,6 @@ export class Annonce {
     this.dateStringValidation = dateStringValidation;
     this.publie = publie;
     this.etatPublication = etatPublication;
+    this.nombreDeVues = nombreDeVues;
   }
 }

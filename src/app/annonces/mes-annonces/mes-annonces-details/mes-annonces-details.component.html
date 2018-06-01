@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <button class="btn btn-danger" (click)="onSupprimerAnnonce()"><span class="glyphicon glyphicon-remove-sign"></span><br>Supprimer Annonce</button>   
+                <button class="btn btn-danger" (click)="openModalSuppression(template)"><span class="glyphicon glyphicon-remove-sign"></span><br>Supprimer Annonce</button>   
             </div>
           </div>
         </div>
@@ -41,21 +41,22 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-      <div class="col-md-4"><span style="font-weight: bold">Prix:</span> {{annonce.prix}}</div>
-      <div class="col-md-4"><span style="font-weight: bold">Ville:</span> {{annonce.ville}}</div>
-      <div class="col-md-4"><span style="font-weight: bold">Phone:</span> {{annonce.telephone}}</div>
+      <div class="col-md-3"><span style="font-weight: bold">Vues:</span> <span style="font-weight: bold; color: darkturquoise">{{annonce.nombreDeVues}}</span>&nbsp;fois</div>
+      <div class="col-md-3"><span style="font-weight: bold">Prix:</span> <span style="font-weight: bold; color: darkturquoise">{{annonce.prix}}</span></div>
+      <div class="col-md-3"><span style="font-weight: bold">Ville:</span> <span style="font-weight: bold; color: darkturquoise">{{annonce.ville}}</span></div>
+      <div class="col-md-3"><span style="font-weight: bold">Date:</span> <span style="font-weight: bold; color: darkturquoise">{{annonce.dateStringValidation}}</span></div>
     </div>
   </div><br>
   <div class="row">
     <div class="col-xs-12">
       <img
         src="http://localhost:8080/images/{{annonce.cheminImage}}"
-        alt="{{ annonce.nom }}"
+        alt="{{ annonce.titre }}"
         class="img-responsive"
         style="max-height: 300px;">
     </div>
   </div><br>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-12">
       <div class="col-md-3"></div>
       <div class="col-md-3">
@@ -68,13 +69,13 @@
       <div class="col-md-3">
         <img
         [src]="annonce.cheminImage"
-        alt="{{ annonce.nom }}"
+        alt="{{ annonce.titre }}"
         class="img-responsive"
         style="max-height: 70px;">
       </div>
       <div class="col-md-3"></div>
     </div>
-  </div><br>
+  </div><br> -->
   <div class="row">
     <div class="col-xs-12">
       <div>
@@ -96,4 +97,14 @@
       <div class="col-md-3"><button class="btn btn-info"><span class="glyphicon glyphicon-share"></span><br>Partager</button></div>
     </div>
   </div><br> -->
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p style="font-weight: bold">Voulez-vous Vraiment supprimer cette annonce ?</p>
+      <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">La suppression d'une Annonce est irréversible, si vous n'êst pas sûr du vouloir la supprimer, nous vous conseillons
+        plutot à la rendre invisible en la <span style="font-weight: bold; color: darkturquoise">dépubliant</span>
+      </p>
+      <button type="button" class="btn btn-success" (click)="confirm()" >Oui Supprier</button>
+      <button type="button" class="btn btn-danger" (click)="decline()" >Non Annuler</button>
+    </div>
+  </ng-template>
   

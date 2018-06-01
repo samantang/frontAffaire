@@ -8,9 +8,10 @@ export class AlerteModel {
     public categorie: string;
     public region: string;
     public ville: string;
+    public id: number;
 
     constructor(titre: string, particuliers: boolean, professionnels: boolean, offre: boolean, demande: boolean, categorie: string,
-                region: string, ville: string) {
+                region: string, ville: string, id: number) {
     this.titre = titre;
     this.particuliers = particuliers;
     this.professionnels = professionnels;
@@ -19,5 +20,6 @@ export class AlerteModel {
     this.categorie = categorie;
     this.region = region;
     this.ville = ville;
+    this.id = id;
     }
 }
