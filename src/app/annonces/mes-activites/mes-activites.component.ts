@@ -32,15 +32,15 @@ export class MesActivitesComponent implements OnInit {
       error => console.log(error)
     );
 
-    // this.annonceService.getMesAnnoncesSignalees().subscribe(
-    //   data => console.log(this.mesAnnoncesSignalees = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
-    //   error => console.log(error)
-    // );
+    this.annonceService.getMesAnnoncesSignalees().subscribe(
+      data => console.log(this.mesAnnoncesSignalees = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
+      error => console.log(error)
+    );
 
-    // this.annonceService.getMesAnnoncesDepubliees().subscribe(
-    //   data => console.log(this.mesAnnoncesDepubliees = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
-    //   error => console.log(error)
-    // );
+    this.annonceService.getMesAnnoncesDepubliees().subscribe(
+      data => console.log(this.mesAnnoncesDepubliees = JSON.parse(JSON.parse(JSON.stringify(data))._body)),
+      error => console.log(error)
+    );
   }
 
 }

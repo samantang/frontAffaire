@@ -37,8 +37,38 @@ export class UserDetailsComponent implements OnInit {
           data => console.log(this.annonces = JSON.parse(JSON.parse(JSON.stringify(data))._body) ),
           error => console.log(error)
         );
+        this.annonceService.getSesAnnonceValidees(this.id).subscribe(
+          data => console.log(this.sesAnnoncesValidees = JSON.parse(JSON.parse(JSON.stringify(data))._body) ),
+          error => console.log(error)
+        );
+        this.annonceService.getSesAnnoncesInvalidees(this.id).subscribe(
+          data => console.log(this.sesAnnoncesInvalidees = JSON.parse(JSON.parse(JSON.stringify(data))._body) ),
+          error => console.log(error)
+        );
+        this.annonceService.getSesAnnoncesSignalees(this.id).subscribe(
+          data => console.log(this.sesAnnoncesSignalees = JSON.parse(JSON.parse(JSON.stringify(data))._body) ),
+          error => console.log(error)
+        );
+        this.annonceService.getSesAnnoncesDepubliees(this.id).subscribe(
+          data => console.log(this.sesAnnoncesDepubliees = JSON.parse(JSON.parse(JSON.stringify(data))._body) ),
+          error => console.log(error)
+        );
       }
     );
+    // this.route.params
+    // .subscribe(
+    //   (params: Params) => {
+    //     this.id = +params['id'];
+    //     this.annonceService.getSesAnnonceValidees(this.id).subscribe(
+    //       data => console.log(this.sesAnnoncesValidees = JSON.parse(JSON.parse(JSON.stringify(data))._body) ),
+    //       error => console.log(error)
+    //     );
+    //     this.annonceService.getMesAnnoncesId(this.id).subscribe(
+    //       data => console.log(this.annonces = JSON.parse(JSON.parse(JSON.stringify(data))._body) ),
+    //       error => console.log(error)
+    //     );
+    //   }
+    // );
   }
 
   onDisableCompte() {

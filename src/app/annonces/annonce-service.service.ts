@@ -122,20 +122,40 @@ export class AnnonceServiceService {
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
     return this.http.post(url, this.usernameLogged, {headers: headers});
   }
+  getSesAnnonceValidees (id: number) {
+    const url = 'http://localhost:8080/get-user/ses-annonces-validees/' + id + '';
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.get(url, {headers: headers});
+  }
   getMesAnnoncesInvalidees () {
     const url = 'http://localhost:8080/get-user/mes-annonces-invalidees';
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
     return this.http.post(url, this.usernameLogged, {headers: headers});
+  }
+  getSesAnnoncesInvalidees (id: number) {
+    const url = 'http://localhost:8080/get-user/ses-annonces-invalidees/' + id + '';
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.get(url, {headers: headers});
   }
   getMesAnnoncesSignalees () {
     const url = 'http://localhost:8080/get-user/mes-annonces-signalees';
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
     return this.http.post(url, this.usernameLogged, {headers: headers});
   }
+  getSesAnnoncesSignalees (id: number) {
+    const url = 'http://localhost:8080/get-user/ses-annonces-signalees/' + id + '';
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.get(url, {headers: headers});
+  }
   getMesAnnoncesDepubliees () {
     const url = 'http://localhost:8080/get-user/mes-annonces-depubliees';
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
     return this.http.post(url, this.usernameLogged, {headers: headers});
+  }
+  getSesAnnoncesDepubliees (id: number) {
+    const url = 'http://localhost:8080/get-user/ses-annonces-depubliees/' + id + '';
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.get(url, {headers: headers});
   }
   getAnnonceApi(index: number) {
     const headers1 = new Headers({'Content-Type': 'application/json'});

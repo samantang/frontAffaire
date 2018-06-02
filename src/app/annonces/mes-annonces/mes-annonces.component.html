@@ -4,6 +4,9 @@
         </p>
 </div>
 <div *ngIf="usernameLogged" class="row">
+    <div>
+        <h3 style="font-weight: bold; color: dodgerblue; text-align: center">Vos Annonces</h3><br>
+      </div>
     <div class="col-md-4">
         <app-mes-annonces-items
           *ngFor="let annonceEl of annonces; let i = index"
